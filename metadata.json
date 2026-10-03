@@ -1,0 +1,6 @@
+{
+  "name": "SIPMAS - Pengaduan Masyarakat Dinsos Tanjungbalai",
+  "description": "Sistem Informasi Pengaduan Masyarakat (SIPMAS) Dinas Sosial Kota Tanjungbalai untuk penerimaan, penelaahan, klasifikasi, penyaluran, penyelesaian, dan pengarsipan pengaduan secara terintegrasi.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
