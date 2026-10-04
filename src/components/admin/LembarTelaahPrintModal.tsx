@@ -14,6 +14,8 @@ import {
   Share2 
 } from 'lucide-react';
 
+import { triggerPrint } from '../../utils/printHelper';
+
 interface LembarTelaahPrintModalProps {
   isOpen: boolean;
   onClose: () => void;
@@ -55,12 +57,7 @@ export const LembarTelaahPrintModal: React.FC<LembarTelaahPrintModalProps> = ({
   const hasilAnalisis = currentData?.hasilAnalisis ?? (complaint.telaah?.hasilTelaahAnalisis || '-');
 
   const handlePrint = () => {
-    try {
-      window.print();
-    } catch (e) {
-      console.error('Print error:', e);
-      alert('Gunakan menu cetak peramban (Ctrl + P) untuk menyimpan sebagai PDF atau mencetak berkas.');
-    }
+    triggerPrint('');
   };
 
   const handleCopyText = () => {
@@ -148,17 +145,17 @@ Petugas Penelaah: ${petugasPenelaah} (NIP: ${nipPenelaah})
   };
 
   const modalJSX = (
-    <div className="fixed inset-0 z-[9999] overflow-y-auto no-print">
-      {/* Dark backdrop */}
+    <div className="fixed inset-0 z-[9999] overflow-y-auto print:static print:inset-auto print:z-auto print:overflow-visible print:bg-white print:p-0 print:m-0">
+      {/* Dark backdrop (hidden on print) */}
       <div 
-        className="fixed inset-0 bg-slate-950/75 backdrop-blur-xs transition-opacity" 
+        className="fixed inset-0 bg-slate-950/75 backdrop-blur-xs transition-opacity no-print" 
         onClick={onClose} 
       />
 
-      <div className="flex min-h-screen items-center justify-center p-2 sm:p-4 text-center">
-        <div className="relative w-full max-w-4xl bg-white rounded-3xl shadow-2xl border border-slate-300 overflow-hidden my-4 text-left flex flex-col max-h-[92vh]">
+      <div className="flex min-h-screen items-center justify-center p-2 sm:p-4 text-center print:block print:p-0 print:m-0 print:min-h-0">
+        <div className="relative w-full max-w-4xl bg-white rounded-3xl shadow-2xl border border-slate-300 overflow-hidden my-4 text-left flex flex-col max-h-[92vh] print:static print:w-full print:max-w-none print:shadow-none print:border-none print:overflow-visible print:m-0 print:p-0 print:max-h-none print:block">
           {/* Action Header Bar (No Print) */}
-          <div className="bg-slate-900 text-white p-3 sm:p-4 sm:px-6 flex flex-wrap items-center justify-between gap-2.5 shrink-0 border-b border-slate-800">
+          <div className="bg-slate-900 text-white p-3 sm:p-4 sm:px-6 flex flex-wrap items-center justify-between gap-2.5 shrink-0 border-b border-slate-800 no-print">
             <div className="flex items-center gap-2.5 min-w-0">
               <div className="p-2 bg-red-700 text-white rounded-xl shrink-0">
                 <FileText className="w-5 h-5 text-amber-300" />
@@ -216,7 +213,7 @@ Petugas Penelaah: ${petugasPenelaah} (NIP: ${nipPenelaah})
           </div>
 
           {/* Printable Document Body */}
-          <div className="p-2 sm:p-6 overflow-y-auto bg-slate-100 flex-1">
+          <div className="p-2 sm:p-6 overflow-y-auto bg-slate-100 flex-1 print:p-0 print:bg-white print:overflow-visible">
             <div className="max-w-3xl mx-auto bg-white p-4 sm:p-10 shadow-lg border border-slate-300 rounded-xl text-slate-900 print-page text-xs leading-relaxed space-y-4 sm:space-y-6">
               
               {/* Official Kop Surat */}

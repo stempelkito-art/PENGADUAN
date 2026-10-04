@@ -15,6 +15,7 @@ import {
   Sparkles,
   Download
 } from 'lucide-react';
+import { triggerPrint } from '../../utils/printHelper';
 
 interface DistributionFormProps {
   complaint: Complaint;
@@ -29,6 +30,17 @@ export const DistributionForm: React.FC<DistributionFormProps> = ({
 
   // Mode: Form edit or Surat Preview
   const [activeView, setActiveView] = useState<'form' | 'surat'>('form');
+
+  const handlePrintLetter = () => {
+    if (activeView !== 'surat') {
+      setActiveView('surat');
+      setTimeout(() => {
+        triggerPrint('');
+      }, 150);
+    } else {
+      triggerPrint('');
+    }
+  };
 
   // Initial Form Data
   const defaultNomorSurat = complaint.penyaluran?.nomorSuratPenyaluran || `460/${String(Math.floor(Math.random() * 800) + 100).padStart(3, '0')}/DS/2026`;
@@ -137,8 +149,8 @@ export const DistributionForm: React.FC<DistributionFormProps> = ({
 
         <button
           type="button"
-          onClick={() => window.print()}
-          className="px-4 py-2 bg-slate-800 hover:bg-slate-900 text-white font-bold text-xs rounded-xl flex items-center gap-1.5 shadow-xs"
+          onClick={handlePrintLetter}
+          className="px-4 py-2 bg-slate-800 hover:bg-slate-900 text-white font-bold text-xs rounded-xl flex items-center gap-1.5 shadow-xs cursor-pointer"
         >
           <Printer className="w-3.5 h-3.5" />
           <span>Cetak Surat Resmi</span>
@@ -448,8 +460,8 @@ export const DistributionForm: React.FC<DistributionFormProps> = ({
             </button>
             <button
               type="button"
-              onClick={() => window.print()}
-              className="px-6 py-2.5 bg-red-700 hover:bg-red-800 text-white font-bold text-xs rounded-xl shadow-md flex items-center gap-1.5"
+              onClick={handlePrintLetter}
+              className="px-6 py-2.5 bg-red-700 hover:bg-red-800 text-white font-bold text-xs rounded-xl shadow-md flex items-center gap-1.5 cursor-pointer"
             >
               <Printer className="w-4 h-4" />
               <span>Cetak / Simpan PDF Surat</span>

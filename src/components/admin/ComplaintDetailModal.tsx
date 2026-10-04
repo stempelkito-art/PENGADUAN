@@ -23,6 +23,8 @@ import {
   FolderOpen
 } from 'lucide-react';
 
+import { triggerPrint } from '../../utils/printHelper';
+
 interface ComplaintDetailModalProps {
   complaintId: string | null;
   onClose: () => void;
@@ -117,16 +119,16 @@ export const ComplaintDetailModal: React.FC<ComplaintDetailModalProps> = ({
   };
 
   return (
-    <div className="fixed inset-0 z-50 overflow-y-auto no-print">
+    <div className="fixed inset-0 z-50 overflow-y-auto print:static print:inset-auto print:z-auto print:overflow-visible print:bg-white print:p-0 print:m-0">
       <div 
-        className="fixed inset-0 bg-slate-900/60 backdrop-blur-xs transition-opacity" 
+        className="fixed inset-0 bg-slate-900/60 backdrop-blur-xs transition-opacity no-print" 
         onClick={onClose} 
       />
 
-      <div className="flex min-h-full items-center justify-center p-2 sm:p-4">
-        <div className="relative w-full max-w-5xl bg-white rounded-3xl shadow-2xl border border-slate-200 overflow-hidden my-6">
+      <div className="flex min-h-full items-center justify-center p-2 sm:p-4 print:block print:p-0 print:m-0 print:min-h-0">
+        <div className="relative w-full max-w-5xl bg-white rounded-3xl shadow-2xl border border-slate-200 overflow-hidden my-6 print:static print:w-full print:max-w-none print:shadow-none print:border-none print:overflow-visible print:m-0 print:p-0 print:block">
           {/* Modal Sticky Header Bar */}
-          <div className="sticky top-0 z-30 bg-slate-900 text-white p-3 sm:px-6 flex flex-wrap sm:flex-nowrap items-center justify-between gap-2 border-b border-slate-800">
+          <div className="sticky top-0 z-30 bg-slate-900 text-white p-3 sm:px-6 flex flex-wrap sm:flex-nowrap items-center justify-between gap-2 border-b border-slate-800 no-print">
             <div className="flex flex-wrap items-center gap-2 min-w-0">
               <span className="font-mono text-xs sm:text-base font-bold text-amber-400 bg-slate-800 px-2.5 py-1 rounded-lg border border-slate-700">
                 {complaint.nomorPengaduan}
@@ -137,7 +139,7 @@ export const ComplaintDetailModal: React.FC<ComplaintDetailModalProps> = ({
 
             <div className="flex items-center gap-1.5 shrink-0 ml-auto">
               <button
-                onClick={() => window.print()}
+                onClick={() => triggerPrint('')}
                 className="p-1.5 sm:p-2 bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white rounded-lg text-xs flex items-center gap-1.5 transition-colors cursor-pointer"
                 title="Cetak Berkas Ini"
               >
@@ -155,7 +157,7 @@ export const ComplaintDetailModal: React.FC<ComplaintDetailModalProps> = ({
           </div>
 
           {/* Quick Actions Bar */}
-          <div className="bg-slate-50 border-b border-slate-200 p-3 sm:px-6 flex flex-wrap items-center justify-between gap-2 text-xs">
+          <div className="bg-slate-50 border-b border-slate-200 p-3 sm:px-6 flex flex-wrap items-center justify-between gap-2 text-xs no-print">
             <div className="flex items-center gap-2">
               <span className="text-slate-500 font-semibold">Batas Waktu SLA:</span>
               <SlaIndicator deadline={complaint.slaDeadline} status={complaint.status} />
@@ -231,7 +233,7 @@ export const ComplaintDetailModal: React.FC<ComplaintDetailModalProps> = ({
           </div>
 
           {/* Modal Body: Complete End-to-End Detail (Section 24) */}
-          <div className="p-6 sm:p-10 space-y-8 max-h-[80vh] overflow-y-auto print-page">
+          <div className="p-6 sm:p-10 space-y-8 max-h-[80vh] overflow-y-auto print:max-h-none print:overflow-visible print:p-0 print-page">
             <OfficialKop subTitle="BERKAS ADMINISTRASI LENGKAP PENGADUAN MASYARAKAT" />
 
             {/* 1. IDENTITAS PENGADU */}

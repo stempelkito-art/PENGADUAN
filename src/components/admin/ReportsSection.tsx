@@ -17,6 +17,7 @@ import {
   FileSpreadsheet
 } from 'lucide-react';
 import { GoogleWorkspaceSyncModal } from '../common/GoogleWorkspaceSyncModal';
+import { triggerPrint } from '../../utils/printHelper';
 
 export const ReportsSection: React.FC = () => {
   const { complaints, exportComplaintsCSV, backupDatabase } = useApp();
@@ -97,8 +98,8 @@ export const ReportsSection: React.FC = () => {
           </button>
 
           <button
-            onClick={() => window.print()}
-            className="px-3.5 py-2 bg-red-700 hover:bg-red-800 text-white font-bold text-xs rounded-xl flex items-center gap-1.5 transition-colors"
+            onClick={() => triggerPrint('')}
+            className="px-3.5 py-2 bg-red-700 hover:bg-red-800 text-white font-bold text-xs rounded-xl flex items-center gap-1.5 transition-colors cursor-pointer"
           >
             <Printer className="w-3.5 h-3.5" />
             <span>Cetak Laporan PDF</span>

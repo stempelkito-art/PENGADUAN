@@ -3,6 +3,7 @@ import { useApp } from '../../context/AppContext';
 import { OfficialKop } from '../common/OfficialKop';
 import { MediaPengaduan, StatusHubungan, DokumenPendukungItem } from '../../types';
 import { DEFAULT_DOKUMEN_CHECKLIST } from '../../data/initialData';
+import { triggerPrint } from '../../utils/printHelper';
 import { 
   CheckCircle, 
   Upload, 
@@ -144,12 +145,12 @@ export const CreateComplaintForm: React.FC<CreateComplaintFormProps> = ({ onSucc
   if (submittedComplaint) {
     return (
       <div className="max-w-3xl mx-auto px-4 py-8">
-        <div className="bg-white rounded-3xl p-6 sm:p-10 shadow-2xl border border-emerald-200 text-center relative overflow-hidden">
-          <div className="w-20 h-20 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center mx-auto mb-4">
+        <div className="bg-white rounded-3xl p-6 sm:p-10 shadow-2xl border border-emerald-200 text-center relative overflow-hidden print-page">
+          <div className="w-20 h-20 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center mx-auto mb-4 no-print">
             <CheckCircle className="w-10 h-10" />
           </div>
 
-          <span className="text-xs font-bold uppercase tracking-wider text-emerald-800 bg-emerald-100 px-3 py-1 rounded-full">
+          <span className="text-xs font-bold uppercase tracking-wider text-emerald-800 bg-emerald-100 px-3 py-1 rounded-full no-print">
             Pengaduan Berhasil Terdaftar
           </span>
 
@@ -171,7 +172,7 @@ export const CreateComplaintForm: React.FC<CreateComplaintFormProps> = ({ onSucc
               </span>
               <button
                 onClick={copyNomor}
-                className="p-2 bg-slate-800 hover:bg-slate-700 text-slate-200 rounded-lg text-xs flex items-center gap-1 transition-colors"
+                className="p-2 bg-slate-800 hover:bg-slate-700 text-slate-200 rounded-lg text-xs flex items-center gap-1 transition-colors no-print"
                 title="Salin Nomor Pengaduan"
               >
                 {copied ? <CheckCircle className="w-4 h-4 text-emerald-400" /> : <Copy className="w-4 h-4" />}
@@ -202,10 +203,10 @@ export const CreateComplaintForm: React.FC<CreateComplaintFormProps> = ({ onSucc
             </div>
           </div>
 
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-3 no-print">
             <button
-              onClick={() => window.print()}
-              className="w-full sm:w-auto px-6 py-3 bg-slate-800 hover:bg-slate-900 text-white font-bold text-xs sm:text-sm rounded-xl flex items-center justify-center gap-2 shadow-sm"
+              onClick={() => triggerPrint('')}
+              className="w-full sm:w-auto px-6 py-3 bg-slate-800 hover:bg-slate-900 text-white font-bold text-xs sm:text-sm rounded-xl flex items-center justify-center gap-2 shadow-sm cursor-pointer"
             >
               <Printer className="w-4 h-4" />
               <span>Cetak Bukti Resi Tanda Terima</span>

@@ -15,6 +15,7 @@ import { AdminLayout } from './components/admin/AdminLayout';
 const MainAppContent: React.FC = () => {
   const { 
     viewMode, 
+    isOfficerLoggedIn,
     publicActiveTab, 
     setPublicActiveTab,
     setSelectedComplaintId 
@@ -22,7 +23,8 @@ const MainAppContent: React.FC = () => {
 
   const [notificationOpen, setNotificationOpen] = useState(false);
 
-  if (viewMode === 'admin') {
+  // Officer dashboard requires verified login session
+  if (viewMode === 'admin' && isOfficerLoggedIn) {
     return (
       <div className="min-h-screen bg-slate-100 text-slate-900 font-sans">
         <AdminLayout onOpenNotifications={() => setNotificationOpen(true)} />

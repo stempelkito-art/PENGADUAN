@@ -3,6 +3,7 @@ import { useApp } from '../../context/AppContext';
 import { Complaint } from '../../types';
 import { StatusBadge, PriorityBadge, KewenanganBadge } from '../common/StatusBadge';
 import { SlaIndicator } from '../common/SlaIndicator';
+import { MonthlyComplaintChart } from './MonthlyComplaintChart';
 import { 
   FileText, 
   Clock, 
@@ -547,6 +548,9 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({
           </div>
         </div>
       </div>
+
+      {/* Monthly Complaints Recharts Visual Trend Component */}
+      <MonthlyComplaintChart complaints={complaints} />
 
       {/* Visual Analytics Grid */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">

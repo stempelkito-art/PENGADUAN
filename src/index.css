@@ -6,29 +6,58 @@
   }
 }
 
+/* At-rule @page wajib berada di tingkat akar (root level) di luar @media print
+   agar parser CSS peramban tidak membuang aturan margin 0mm */
+@page {
+  size: auto;
+  margin: 0mm !important;
+}
+
 @media print {
-  /* Hide interactive chrome and navigation when printing */
-  .no-print {
-    display: none !important;
-  }
-  
-  body {
-    background: white !important;
-    color: black !important;
-    font-size: 11pt !important;
+  /* Hilangkan header default peramban (judul halaman & tanggal di atas) serta footer (URL) */
+  @page {
+    size: auto;
+    margin: 0mm !important;
   }
 
-  .print-page {
-    box-shadow: none !important;
+  /* Pastikan seluruh background dan teks dicetak bersih */
+  html, body {
     margin: 0 !important;
     padding: 0 !important;
+    background: #ffffff !important;
+    color: #000000 !important;
+    font-size: 11pt !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  /* Sembunyikan seluruh kontrol interaktif, tombol, dan navigasi saat mencetak */
+  .no-print, header, nav, footer.no-print {
+    display: none !important;
+  }
+
+  /* Wadah lembar dokumen cetak resmi */
+  .print-page {
+    box-shadow: none !important;
+    border: none !important;
+    border-radius: 0 !important;
+    margin: 0 auto !important;
+    padding: 1.5cm 2cm !important; /* Standar batas tepi kertas surat dinas resmi */
     width: 100% !important;
     max-width: 100% !important;
-    page-break-after: always;
+    background: #ffffff !important;
+    box-sizing: border-box !important;
+    page-break-after: auto;
   }
 
   .print-kop-line {
     border-bottom: 3px double #000 !important;
+  }
+
+  /* Cegah pemotongan tabel atau tanda tangan di tengah baris */
+  tr, .print-avoid-break {
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
   }
 }
 

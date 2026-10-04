@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useState, useEffect } from 'react';
+import React, { createContext, useContext, useState, useEffect, useRef, useCallback } from 'react';
 import { 
   Complaint, 
   User, 
@@ -55,11 +55,20 @@ interface AppContextType {
   isLoginModalOpen: boolean;
   openLoginModal: () => void;
   closeLoginModal: () => void;
+  isOfficerLoggedIn: boolean;
+  setIsOfficerLoggedIn: (loggedIn: boolean) => void;
+  logoutOfficer: () => void;
 
   // Notifications
   notifications: AppNotification[];
   markNotificationRead: (id: string) => void;
   markAllNotificationsRead: () => void;
+
+  // Server-side Multi-PC Cloud Sync
+  syncStatus: 'synced' | 'syncing' | 'offline' | 'error';
+  lastSyncTime: string | null;
+  isServerConnected: boolean;
+  triggerManualSync: () => Promise<void>;
 
   // Utilities
   resetToDefaultData: () => void;
@@ -75,6 +84,7 @@ const STORAGE_KEY_USERS = 'sipmas_dinsos_users_v1';
 const STORAGE_KEY_NOTIF = 'sipmas_dinsos_notifications_v1';
 const STORAGE_KEY_CURRENT_USER = 'sipmas_dinsos_current_user_v1';
 const STORAGE_KEY_OFFICIAL_INFO = 'sipmas_dinsos_official_info_v1';
+const STORAGE_KEY_OFFICER_AUTH = 'sipmas_dinsos_auth_v1';
 
 export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [officialInfo, setOfficialInfo] = useState<OfficialInfo>(() => {
@@ -90,7 +100,17 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
   const [complaints, setComplaints] = useState<Complaint[]>(() => {
     try {
       const stored = localStorage.getItem(STORAGE_KEY_COMPLAINTS);
-      if (stored) return JSON.parse(stored);
+      if (stored) {
+        const parsed: Complaint[] = JSON.parse(stored);
+        const existingIds = new Set(parsed.map(c => c.id));
+        const missingDefaults = INITIAL_COMPLAINTS.filter(c => !existingIds.has(c.id));
+        if (missingDefaults.length > 0) {
+          const merged = [...parsed, ...missingDefaults];
+          localStorage.setItem(STORAGE_KEY_COMPLAINTS, JSON.stringify(merged));
+          return merged;
+        }
+        return parsed;
+      }
     } catch (e) {
       console.error('Failed to load complaints from storage', e);
     }
@@ -142,6 +162,30 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
   const [publicActiveTab, setPublicActiveTab] = useState<string>('beranda');
   const [selectedComplaintId, setSelectedComplaintId] = useState<string | null>(null);
   const [isLoginModalOpen, setIsLoginModalOpen] = useState<boolean>(false);
+  const [isOfficerLoggedIn, setIsOfficerLoggedInState] = useState<boolean>(() => {
+    try {
+      return localStorage.getItem(STORAGE_KEY_OFFICER_AUTH) === 'true';
+    } catch (e) {
+      return false;
+    }
+  });
+
+  const setIsOfficerLoggedIn = (loggedIn: boolean) => {
+    setIsOfficerLoggedInState(loggedIn);
+    try {
+      if (loggedIn) {
+        localStorage.setItem(STORAGE_KEY_OFFICER_AUTH, 'true');
+      } else {
+        localStorage.removeItem(STORAGE_KEY_OFFICER_AUTH);
+      }
+    } catch (e) {}
+  };
+
+  const logoutOfficer = () => {
+    setIsOfficerLoggedIn(false);
+    setViewMode('public');
+    setPublicActiveTab('beranda');
+  };
 
   const openLoginModal = () => setIsLoginModalOpen(true);
   const closeLoginModal = () => setIsLoginModalOpen(false);
@@ -194,6 +238,199 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
       localStorage.setItem(STORAGE_KEY_CURRENT_USER, JSON.stringify(currentUser));
     } catch (e) {}
   }, [currentUser]);
+
+  // Server-Side Multi-PC Database Synchronization State
+  const [syncStatus, setSyncStatus] = useState<'synced' | 'syncing' | 'offline' | 'error'>('synced');
+  const [lastSyncTime, setLastSyncTime] = useState<string | null>(null);
+  const [isServerConnected, setIsServerConnected] = useState<boolean>(true);
+  const initialSyncCompleted = useRef<boolean>(false);
+  const syncDebounceRef = useRef<NodeJS.Timeout | null>(null);
+
+  // Function to pull latest updates from server (other PCs)
+  const fetchUpdatesFromServer = useCallback(async () => {
+    try {
+      const res = await fetch('/api/database');
+      if (!res.ok) throw new Error('Server unreachable');
+      const json = await res.json();
+      if (json.exists && json.data) {
+        const sData = json.data;
+        setIsServerConnected(true);
+        setSyncStatus('synced');
+        setLastSyncTime(new Date().toLocaleTimeString('id-ID'));
+
+        if (Array.isArray(sData.complaints) && sData.complaints.length > 0) {
+          setComplaints(prev => {
+            const serverList: Complaint[] = sData.complaints;
+            if (serverList.length !== prev.length) return serverList;
+            const prevMap = new Map(prev.map(c => [c.id, c]));
+            for (const sc of serverList) {
+              const pc = prevMap.get(sc.id);
+              if (!pc || pc.status !== sc.status || (pc.auditLogs?.length || 0) !== (sc.auditLogs?.length || 0)) {
+                return serverList;
+              }
+            }
+            return prev;
+          });
+        }
+
+        if (Array.isArray(sData.users) && sData.users.length > 0) {
+          setUsers(prev => {
+            const serverUsers: User[] = sData.users;
+            return serverUsers.length !== prev.length ? serverUsers : prev;
+          });
+        }
+      }
+    } catch (err) {
+      setIsServerConnected(false);
+      setSyncStatus('offline');
+    }
+  }, []);
+
+  // Manual Trigger Sync
+  const triggerManualSync = useCallback(async () => {
+    try {
+      setSyncStatus('syncing');
+      const res = await fetch('/api/database/sync', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          complaints,
+          users,
+          officialInfo,
+          notifications
+        })
+      });
+      if (res.ok) {
+        const json = await res.json();
+        setIsServerConnected(true);
+        setSyncStatus('synced');
+        setLastSyncTime(new Date().toLocaleTimeString('id-ID'));
+        if (json.data?.complaints) {
+          setComplaints(json.data.complaints);
+        }
+      } else {
+        setSyncStatus('error');
+      }
+    } catch (err) {
+      setSyncStatus('offline');
+      setIsServerConnected(false);
+    }
+  }, [complaints, users, officialInfo, notifications]);
+
+  // Initial Load from Server & Multi-PC Background Polling
+  useEffect(() => {
+    let isMounted = true;
+
+    async function initialLoad() {
+      try {
+        setSyncStatus('syncing');
+        const res = await fetch('/api/database');
+        if (!res.ok) throw new Error('Failed to reach server');
+        const json = await res.json();
+
+        if (json.exists && json.data) {
+          const s = json.data;
+          if (isMounted) {
+            if (Array.isArray(s.complaints) && s.complaints.length > 0) {
+              setComplaints(s.complaints);
+            }
+            if (Array.isArray(s.users) && s.users.length > 0) {
+              setUsers(s.users);
+            }
+            if (s.officialInfo) {
+              setOfficialInfo(s.officialInfo);
+            }
+            if (Array.isArray(s.notifications) && s.notifications.length > 0) {
+              setNotifications(s.notifications);
+            }
+            setIsServerConnected(true);
+            setSyncStatus('synced');
+            setLastSyncTime(new Date().toLocaleTimeString('id-ID'));
+          }
+        } else {
+          // Initialize server with default local dataset
+          await fetch('/api/database', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              complaints,
+              users,
+              officialInfo,
+              notifications,
+              updatedBy: 'initialization'
+            })
+          });
+          if (isMounted) {
+            setIsServerConnected(true);
+            setSyncStatus('synced');
+            setLastSyncTime(new Date().toLocaleTimeString('id-ID'));
+          }
+        }
+      } catch (err) {
+        console.warn('Server sync initial load warning:', err);
+        if (isMounted) {
+          setSyncStatus('offline');
+          setIsServerConnected(false);
+        }
+      } finally {
+        initialSyncCompleted.current = true;
+      }
+    }
+
+    initialLoad();
+
+    // Poll server every 12 seconds so updates made from other PCs appear automatically
+    const pollInterval = setInterval(() => {
+      fetchUpdatesFromServer();
+    }, 12000);
+
+    const onFocus = () => {
+      fetchUpdatesFromServer();
+    };
+    window.addEventListener('focus', onFocus);
+
+    return () => {
+      isMounted = false;
+      clearInterval(pollInterval);
+      window.removeEventListener('focus', onFocus);
+    };
+  }, [fetchUpdatesFromServer]);
+
+  // Debounced Auto-Sync to Server on local changes
+  useEffect(() => {
+    if (!initialSyncCompleted.current) return;
+
+    if (syncDebounceRef.current) {
+      clearTimeout(syncDebounceRef.current);
+    }
+
+    syncDebounceRef.current = setTimeout(async () => {
+      try {
+        setSyncStatus('syncing');
+        const res = await fetch('/api/database/sync', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            complaints,
+            users,
+            officialInfo,
+            notifications
+          })
+        });
+        if (res.ok) {
+          setIsServerConnected(true);
+          setSyncStatus('synced');
+          setLastSyncTime(new Date().toLocaleTimeString('id-ID'));
+        }
+      } catch (err) {
+        setSyncStatus('offline');
+      }
+    }, 700);
+
+    return () => {
+      if (syncDebounceRef.current) clearTimeout(syncDebounceRef.current);
+    };
+  }, [complaints, users, officialInfo, notifications]);
 
   const setUserRole = (role: UserRole) => {
     const target = users.find(u => u.role === role) || {
@@ -632,6 +869,19 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
     setUsers(DEFAULT_USERS);
     setNotifications(INITIAL_NOTIFICATIONS);
     setOfficialInfo(OFFICIAL_INFO);
+
+    // Sync reset to server
+    fetch('/api/database', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        complaints: INITIAL_COMPLAINTS,
+        users: DEFAULT_USERS,
+        officialInfo: OFFICIAL_INFO,
+        notifications: INITIAL_NOTIFICATIONS,
+        updatedBy: 'reset-defaults'
+      })
+    }).catch(err => console.warn('Failed resetting server db:', err));
   };
 
   const exportComplaintsCSV = () => {
@@ -702,6 +952,20 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
         if (parsed.users) setUsers(parsed.users);
         if (parsed.notifications) setNotifications(parsed.notifications);
         if (parsed.instansi) setOfficialInfo(parsed.instansi);
+
+        // Immediate sync to server database
+        fetch('/api/database', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            complaints: parsed.complaints,
+            users: parsed.users || users,
+            officialInfo: parsed.instansi || officialInfo,
+            notifications: parsed.notifications || notifications,
+            updatedBy: 'restored-backup'
+          })
+        }).catch(err => console.warn('Failed syncing restored db to server:', err));
+
         return true;
       }
     } catch (e) {
@@ -742,9 +1006,16 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
       isLoginModalOpen,
       openLoginModal,
       closeLoginModal,
+      isOfficerLoggedIn,
+      setIsOfficerLoggedIn,
+      logoutOfficer,
       notifications,
       markNotificationRead,
       markAllNotificationsRead,
+      syncStatus,
+      lastSyncTime,
+      isServerConnected,
+      triggerManualSync,
       resetToDefaultData,
       exportComplaintsCSV,
       backupDatabase,

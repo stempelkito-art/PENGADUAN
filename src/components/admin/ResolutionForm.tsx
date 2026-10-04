@@ -13,6 +13,7 @@ import {
   MessageSquare,
   Sparkles
 } from 'lucide-react';
+import { triggerPrint } from '../../utils/printHelper';
 
 interface ResolutionFormProps {
   complaint: Complaint;
@@ -134,7 +135,7 @@ export const ResolutionForm: React.FC<ResolutionFormProps> = ({
   };
 
   return (
-    <div className="bg-white rounded-3xl p-6 sm:p-10 border border-slate-200 shadow-xl max-w-4xl mx-auto">
+    <div className="bg-white rounded-3xl p-6 sm:p-10 border border-slate-200 shadow-xl max-w-4xl mx-auto print-page">
       <OfficialKop subTitle="FORMULIR PENYELESAIAN PENGADUAN" />
 
       <form onSubmit={handleSave} className="mt-8 space-y-8">
@@ -442,8 +443,8 @@ export const ResolutionForm: React.FC<ResolutionFormProps> = ({
         <div className="flex flex-col sm:flex-row items-center justify-end gap-3 pt-4 no-print">
           <button
             type="button"
-            onClick={() => window.print()}
-            className="w-full sm:w-auto px-5 py-2.5 bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold text-xs rounded-xl flex items-center justify-center gap-1.5"
+            onClick={() => triggerPrint('')}
+            className="w-full sm:w-auto px-5 py-2.5 bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold text-xs rounded-xl flex items-center justify-center gap-1.5 cursor-pointer"
           >
             <Printer className="w-4 h-4" />
             <span>Cetak Formulir Penyelesaian</span>

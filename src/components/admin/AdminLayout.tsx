@@ -36,7 +36,8 @@ import {
   Cloud,
   Shield,
   Layers,
-  Bell
+  Bell,
+  LogOut
 } from 'lucide-react';
 import { GoogleWorkspaceSyncModal } from '../common/GoogleWorkspaceSyncModal';
 
@@ -114,6 +115,7 @@ export const AdminLayout: React.FC<AdminLayoutProps> = ({ onOpenNotifications })
     selectedComplaintId,
     setSelectedComplaintId,
     openLoginModal,
+    logoutOfficer,
     notifications
   } = useApp();
 
@@ -353,10 +355,25 @@ export const AdminLayout: React.FC<AdminLayoutProps> = ({ onOpenNotifications })
           className="w-full py-2 px-3 text-xs font-semibold text-slate-400 hover:text-white hover:bg-slate-800 rounded-xl flex items-center justify-between transition-colors cursor-pointer"
         >
           <div className="flex items-center gap-2">
-            <ExternalLink className="w-3.5 h-3.5" />
-            <span>Kembali ke Publik</span>
+            <ExternalLink className="w-3.5 h-3.5 text-blue-400" />
+            <span>Lihat Halaman Publik</span>
           </div>
-          <ChevronRight className="w-3.5 h-3.5" />
+          <ChevronRight className="w-3.5 h-3.5 text-slate-500" />
+        </button>
+
+        <button
+          onClick={() => {
+            if (isMobile) setMobileSidebarOpen(false);
+            logoutOfficer();
+          }}
+          className="w-full py-2 px-3 text-xs font-bold text-rose-400 hover:text-rose-200 hover:bg-rose-950/40 border border-rose-900/30 rounded-xl flex items-center justify-between transition-colors cursor-pointer mt-1"
+          title="Keluar dari sesi dashboard petugas"
+        >
+          <div className="flex items-center gap-2">
+            <LogOut className="w-3.5 h-3.5 text-rose-400" />
+            <span>Keluar (Logout)</span>
+          </div>
+          <ChevronRight className="w-3.5 h-3.5 text-rose-400/60" />
         </button>
       </div>
     </div>
@@ -451,6 +468,16 @@ export const AdminLayout: React.FC<AdminLayoutProps> = ({ onOpenNotifications })
             >
               <ExternalLink className="w-3.5 h-3.5" />
               <span className="hidden sm:inline">Halaman Publik</span>
+            </button>
+
+            {/* Logout Button */}
+            <button
+              onClick={logoutOfficer}
+              className="px-3 py-1.5 bg-rose-50 hover:bg-rose-100 text-rose-700 border border-rose-200 rounded-xl text-xs font-bold flex items-center gap-1.5 transition-colors cursor-pointer"
+              title="Keluar dari sesi petugas"
+            >
+              <LogOut className="w-3.5 h-3.5" />
+              <span className="hidden sm:inline">Keluar</span>
             </button>
           </div>
         </header>

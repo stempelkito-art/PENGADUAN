@@ -1,5 +1,6 @@
 import express from 'express';
 import path from 'path';
+import fs from 'fs';
 import { fileURLToPath } from 'url';
 import dotenv from 'dotenv';
 import { GoogleGenAI } from '@google/genai';
@@ -12,7 +13,168 @@ const __dirname = path.dirname(__filename);
 const app = express();
 const PORT = Number(process.env.PORT) || 3000;
 
-app.use(express.json({ limit: '15mb' }));
+app.use(express.json({ limit: '25mb' }));
+
+// Server-Side Database Persistence (Zero-Quota Local Cloud for Multi-PC Sync)
+const DATA_DIR = path.resolve(__dirname, 'data');
+const DB_FILE = path.resolve(DATA_DIR, 'sipmas_db.json');
+
+// Ensure data folder exists
+if (!fs.existsSync(DATA_DIR)) {
+  fs.mkdirSync(DATA_DIR, { recursive: true });
+}
+
+function readDatabase(): any | null {
+  try {
+    if (fs.existsSync(DB_FILE)) {
+      const raw = fs.readFileSync(DB_FILE, 'utf-8');
+      return JSON.parse(raw);
+    }
+  } catch (err) {
+    console.error('Failed reading database file:', err);
+  }
+  return null;
+}
+
+function writeDatabase(data: any): boolean {
+  try {
+    const tempFile = path.resolve(DATA_DIR, `sipmas_db_${Date.now()}.tmp`);
+    fs.writeFileSync(tempFile, JSON.stringify(data, null, 2), 'utf-8');
+    fs.renameSync(tempFile, DB_FILE);
+    return true;
+  } catch (err) {
+    console.error('Failed writing database file:', err);
+    return false;
+  }
+}
+
+// REST Endpoints for Multi-PC Database Synchronization
+app.get('/api/database', (_req, res) => {
+  const db = readDatabase();
+  if (!db) {
+    return res.json({ exists: false, data: null });
+  }
+  return res.json({ exists: true, data: db });
+});
+
+app.post('/api/database', (req, res) => {
+  try {
+    const { complaints, users, officialInfo, notifications } = req.body;
+    const payload = {
+      complaints: Array.isArray(complaints) ? complaints : [],
+      users: Array.isArray(users) ? users : [],
+      officialInfo: officialInfo || null,
+      notifications: Array.isArray(notifications) ? notifications : [],
+      lastUpdated: new Date().toISOString(),
+      updatedBy: req.body.updatedBy || 'client',
+    };
+    const ok = writeDatabase(payload);
+    if (ok) {
+      return res.json({ 
+        success: true, 
+        message: 'Database berhasil disimpan di server SIPMAS',
+        lastUpdated: payload.lastUpdated 
+      });
+    }
+    return res.status(500).json({ success: false, error: 'Gagal menulis database ke server' });
+  } catch (e: any) {
+    return res.status(500).json({ success: false, error: e.message });
+  }
+});
+
+app.post('/api/database/sync', (req, res) => {
+  try {
+    const clientData = req.body || {};
+    let serverDb = readDatabase();
+
+    if (!serverDb) {
+      const newPayload = {
+        complaints: Array.isArray(clientData.complaints) ? clientData.complaints : [],
+        users: Array.isArray(clientData.users) ? clientData.users : [],
+        officialInfo: clientData.officialInfo || null,
+        notifications: Array.isArray(clientData.notifications) ? clientData.notifications : [],
+        lastUpdated: new Date().toISOString(),
+      };
+      writeDatabase(newPayload);
+      return res.json({
+        success: true,
+        action: 'initialized',
+        data: newPayload,
+        serverTime: new Date().toISOString(),
+      });
+    }
+
+    // Smart merge complaints by id
+    const mergedComplaintsMap = new Map();
+    (serverDb.complaints || []).forEach((c: any) => {
+      if (c && c.id) mergedComplaintsMap.set(c.id, c);
+    });
+
+    (clientData.complaints || []).forEach((c: any) => {
+      if (!c || !c.id) return;
+      if (!mergedComplaintsMap.has(c.id)) {
+        mergedComplaintsMap.set(c.id, c);
+      } else {
+        const existing = mergedComplaintsMap.get(c.id);
+        const clientLogs = (c.auditLogs || []).length;
+        const serverLogs = (existing.auditLogs || []).length;
+        // If client has newer or more logs, or updated status
+        if (clientLogs >= serverLogs) {
+          mergedComplaintsMap.set(c.id, c);
+        }
+      }
+    });
+
+    // Smart merge users
+    const mergedUsersMap = new Map();
+    (serverDb.users || []).forEach((u: any) => {
+      if (u && u.id) mergedUsersMap.set(u.id, u);
+    });
+    (clientData.users || []).forEach((u: any) => {
+      if (u && u.id) mergedUsersMap.set(u.id, u);
+    });
+
+    // Smart merge notifications
+    const mergedNotifMap = new Map();
+    (serverDb.notifications || []).forEach((n: any) => {
+      if (n && n.id) mergedNotifMap.set(n.id, n);
+    });
+    (clientData.notifications || []).forEach((n: any) => {
+      if (n && n.id) mergedNotifMap.set(n.id, n);
+    });
+
+    const mergedPayload = {
+      complaints: Array.from(mergedComplaintsMap.values()),
+      users: Array.from(mergedUsersMap.values()),
+      officialInfo: clientData.officialInfo || serverDb.officialInfo,
+      notifications: Array.from(mergedNotifMap.values()),
+      lastUpdated: new Date().toISOString(),
+    };
+
+    writeDatabase(mergedPayload);
+
+    return res.json({
+      success: true,
+      action: 'synced',
+      data: mergedPayload,
+      serverTime: new Date().toISOString(),
+    });
+  } catch (e: any) {
+    return res.status(500).json({ success: false, error: e.message });
+  }
+});
+
+app.get('/api/database/status', (_req, res) => {
+  const db = readDatabase();
+  res.json({
+    status: 'online',
+    hasData: !!db,
+    totalComplaints: db?.complaints?.length || 0,
+    totalUsers: db?.users?.length || 0,
+    lastUpdated: db?.lastUpdated || null,
+    serverTime: new Date().toISOString(),
+  });
+});
 
 // Helper to get GoogleGenAI client if key exists
 function getGeminiClient() {

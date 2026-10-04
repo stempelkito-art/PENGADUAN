@@ -3,6 +3,7 @@ import { useApp } from '../../context/AppContext';
 import { StatusBadge, PriorityBadge } from '../common/StatusBadge';
 import { SlaIndicator } from '../common/SlaIndicator';
 import { OfficialKop } from '../common/OfficialKop';
+import { triggerPrint } from '../../utils/printHelper';
 import { 
   Search, 
   CheckCircle2, 
@@ -163,7 +164,7 @@ export const TrackComplaintSection: React.FC = () => {
   return (
     <div className="max-w-4xl mx-auto px-4 py-8 space-y-8">
       {/* Title */}
-      <div className="text-center max-w-2xl mx-auto">
+      <div className="text-center max-w-2xl mx-auto no-print">
         <span className="text-xs font-bold uppercase tracking-wider text-red-700 bg-red-50 border border-red-200 px-3 py-1 rounded-full">
           Portal Pelacakan Pengaduan Publik
         </span>
@@ -176,7 +177,7 @@ export const TrackComplaintSection: React.FC = () => {
       </div>
 
       {/* Search Input Box */}
-      <div className="bg-white rounded-3xl p-6 sm:p-8 shadow-lg border border-slate-200">
+      <div className="bg-white rounded-3xl p-6 sm:p-8 shadow-lg border border-slate-200 no-print">
         <form onSubmit={handleSearch} className="space-y-4">
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div>
@@ -212,7 +213,7 @@ export const TrackComplaintSection: React.FC = () => {
           <div className="flex justify-end gap-2 pt-2">
             <button
               type="submit"
-              className="px-6 py-2.5 bg-red-700 hover:bg-red-800 text-white font-bold text-xs sm:text-sm rounded-xl transition-colors flex items-center gap-1.5 shadow-sm"
+              className="px-6 py-2.5 bg-red-700 hover:bg-red-800 text-white font-bold text-xs sm:text-sm rounded-xl transition-colors flex items-center gap-1.5 shadow-sm cursor-pointer"
             >
               <Search className="w-4 h-4" />
               <span>Cari Status Pengaduan</span>
@@ -230,7 +231,7 @@ export const TrackComplaintSection: React.FC = () => {
 
       {/* Search Result Detail */}
       {searchedComplaint && (
-        <div className="bg-white rounded-3xl p-6 sm:p-10 shadow-xl border border-slate-200 space-y-8 animate-in fade-in duration-300">
+        <div className="bg-white rounded-3xl p-6 sm:p-10 shadow-xl border border-slate-200 space-y-8 animate-in fade-in duration-300 print-page">
           {/* Header Card */}
           <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 pb-6 border-b border-slate-200">
             <div>
@@ -410,13 +411,13 @@ export const TrackComplaintSection: React.FC = () => {
           )}
 
           {/* Action Footer */}
-          <div className="flex flex-wrap items-center justify-between gap-3 pt-4 border-t border-slate-200">
+          <div className="flex flex-wrap items-center justify-between gap-3 pt-4 border-t border-slate-200 no-print">
             <span className="text-[11px] text-slate-400">
               ID Pelacakan Digital: {searchedComplaint.id}
             </span>
             <button
-              onClick={() => window.print()}
-              className="px-4 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold text-xs rounded-xl flex items-center gap-1.5 transition-colors"
+              onClick={() => triggerPrint('')}
+              className="px-4 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold text-xs rounded-xl flex items-center gap-1.5 transition-colors cursor-pointer"
             >
               <Printer className="w-3.5 h-3.5" />
               <span>Cetak Lembar Status Pengaduan</span>
