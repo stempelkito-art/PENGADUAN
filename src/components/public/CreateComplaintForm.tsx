@@ -267,7 +267,7 @@ export const CreateComplaintForm: React.FC<CreateComplaintFormProps> = ({ onSucc
                   Nomor Pengaduan
                 </label>
                 <div className="px-3.5 py-2.5 bg-slate-200/80 border border-slate-300 rounded-xl text-xs font-mono font-bold text-slate-600">
-                  [Dibuat Otomatis oleh Sistem: PDM/DSKT/2026/XXXXXX]
+                  [Dibuat Otomatis oleh Sistem: 460/XXXXX/PDM/DINSOS/2026]
                 </div>
               </div>
 

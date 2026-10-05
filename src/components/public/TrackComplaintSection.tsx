@@ -190,7 +190,7 @@ export const TrackComplaintSection: React.FC = () => {
                   type="text"
                   value={inputNumber}
                   onChange={(e) => setInputNumber(e.target.value)}
-                  placeholder="Contoh: PDM/DSKT/2026/000001"
+                  placeholder="Contoh: 460/00001/PDM/DINSOS/2026"
                   className="w-full pl-10 pr-4 py-2.5 bg-slate-50 border border-slate-300 rounded-xl text-xs font-mono font-bold text-slate-900 focus:bg-white focus:outline-hidden focus:ring-2 focus:ring-red-600"
                 />
               </div>

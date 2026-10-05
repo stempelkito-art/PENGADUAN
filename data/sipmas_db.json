@@ -1,0 +1,1497 @@
+{
+  "complaints": [
+    {
+      "id": "complaint-001",
+      "nomorPengaduan": "460/00001/PDM/DINSOS/2026",
+      "tanggalPenerimaan": "2026-09-20 09:30",
+      "mediaPengaduan": "Website",
+      "petugasPenerima": "Aisyah Putri, S.Sos",
+      "namaPengadu": "Hj. Rohana Siagian",
+      "nik": "1274015504580002",
+      "alamat": "Jl. D.I. Panjaitan LK. III, Kel. Pasar Baru, Kec. Tanjungbalai Selatan",
+      "nomorTelepon": "081263458921",
+      "email": "rohana.siagian58@gmail.com",
+      "statusHubungan": "Diri sendiri",
+      "pokokPengaduan": "Pencairan Bantuan Sosial PKH Komponen Lansia Tahun 2026 Tidak Masuk Rekening KKS",
+      "uraianKronologi": "Saya adalah lansia penerima manfaat PKH sejak tahun 2022. Pada pencairan tahap 3 bulan Agustus-September 2026 ini saldo bantuan tidak masuk ke Kartu Keluarga Sejahtera (KKS) Bank BRI saya. Sudah dicek ke agen Mandiri dan e-Warong setempat dinyatakan saldo nol. Sementara tetangga sesama lansia sudah menerima bantuan.",
+      "permintaanHarapan": "Mohon dicek status kepesertaan DTKS/DTSEN saya dan dapat dicairkan kembali bantuan PKH lansia untuk kebutuhan obat-obatan sehari-hari.",
+      "catatanPetugasPenerima": "Berkas KTP dan buku rekening KKS terlampir lengkap. Pengadu hadir didampingi keluarga.",
+      "ttdPengadu": "Hj. Rohana Siagian",
+      "ttdPetugasPenerima": "Aisyah Putri, S.Sos",
+      "dokumenPendukung": [
+        {
+          "no": 1,
+          "uraian": "KTP/Identitas",
+          "ada": true,
+          "keterangan": "KTP Asli Tanjungbalai",
+          "fileName": "ktp_rohana.pdf",
+          "fileSize": "1.2 MB",
+          "uploadDate": "2026-09-20"
+        },
+        {
+          "no": 2,
+          "uraian": "KK",
+          "ada": true,
+          "keterangan": "KK Kepala Keluarga alm. suaminya",
+          "fileName": "kk_rohana.pdf",
+          "fileSize": "1.4 MB",
+          "uploadDate": "2026-09-20"
+        },
+        {
+          "no": 3,
+          "uraian": "Surat/Dokumen resmi",
+          "ada": true,
+          "keterangan": "Buku Tabungan KKS BRI No. Rek 0128-01-XXXX",
+          "fileName": "kks_rekening.pdf",
+          "fileSize": "850 KB",
+          "uploadDate": "2026-09-20"
+        },
+        {
+          "no": 4,
+          "uraian": "Foto/Video",
+          "ada": true,
+          "keterangan": "Foto kondisi fisik lansia di rumah",
+          "fileName": "foto_fisik.jpg",
+          "fileSize": "2.1 MB",
+          "uploadDate": "2026-09-20"
+        },
+        {
+          "no": 5,
+          "uraian": "Bukti transaksi/data",
+          "ada": true,
+          "keterangan": "Struk cek saldo ATM BRI Rp 0",
+          "fileName": "struk_atm.jpg",
+          "fileSize": "420 KB",
+          "uploadDate": "2026-09-20"
+        },
+        {
+          "no": 6,
+          "uraian": "Dokumen lainnya",
+          "ada": false,
+          "keterangan": ""
+        }
+      ],
+      "telaah": {
+        "tanggalTelaah": "2026-09-21 11:15",
+        "petugasPenelaah": "Drs. Chairul Anwar, M.Si",
+        "nipPenelaah": "19760315 200501 1 008",
+        "aspekTelaah": [
+          {
+            "no": 1,
+            "aspek": "Identitas pengadu dapat diverifikasi",
+            "ya": true,
+            "catatan": "NIK padan dengan Dukcapil Kota Tanjungbalai"
+          },
+          {
+            "no": 2,
+            "aspek": "Materi pengaduan jelas dan dapat ditindaklanjuti",
+            "ya": true,
+            "catatan": "Masalah penyaluran PKH lansia"
+          },
+          {
+            "no": 3,
+            "aspek": "Pengaduan berkaitan dengan tugas/fungsi Dinas Sosial",
+            "ya": true,
+            "catatan": "Kewenangan Bidang Linjamsos Dinsos Tanjungbalai"
+          },
+          {
+            "no": 4,
+            "aspek": "Pengaduan memiliki bukti/dokumen pendukung",
+            "ya": true,
+            "catatan": "Bukti lengkap"
+          },
+          {
+            "no": 5,
+            "aspek": "Pengaduan membutuhkan koordinasi dengan unit/instansi lain",
+            "ya": true,
+            "catatan": "Koordinasi dengan Bank Penyalur (BRI) dan Kemensos"
+          },
+          {
+            "no": 6,
+            "aspek": "Pengaduan merupakan pengulangan/duplikasi pengaduan sebelumnya",
+            "ya": false,
+            "catatan": "Pengaduan pertama kali di tahun 2026"
+          }
+        ],
+        "klasifikasiList": [
+          {
+            "no": 1,
+            "klasifikasi": "Data bantuan sosial / DTSEN",
+            "ya": true,
+            "keterangan": "Pengecekan di SIKS-NG"
+          },
+          {
+            "no": 2,
+            "klasifikasi": "PKH / Program Sembako / bantuan sosial lainnya",
+            "ya": true,
+            "keterangan": "PKH Komponen Lansia"
+          },
+          {
+            "no": 3,
+            "klasifikasi": "PBI JKN / kepesertaan jaminan sosial",
+            "ya": false,
+            "keterangan": ""
+          },
+          {
+            "no": 4,
+            "klasifikasi": "Rehabilitasi sosial / penyandang disabilitas / lansia",
+            "ya": true,
+            "keterangan": "Kategori Lansia Rentan"
+          },
+          {
+            "no": 5,
+            "klasifikasi": "Perlindungan sosial / kebencanaan",
+            "ya": false,
+            "keterangan": ""
+          },
+          {
+            "no": 6,
+            "klasifikasi": "Lembaga Kesejahteraan Sosial (LKS)",
+            "ya": false,
+            "keterangan": ""
+          },
+          {
+            "no": 7,
+            "klasifikasi": "Pelayanan mobil jenazah",
+            "ya": false,
+            "keterangan": ""
+          },
+          {
+            "no": 8,
+            "klasifikasi": "Pengaduan pelayanan publik",
+            "ya": false,
+            "keterangan": ""
+          },
+          {
+            "no": 9,
+            "klasifikasi": "Data kependudukan/domisili yang perlu verifikasi",
+            "ya": false,
+            "keterangan": ""
+          },
+          {
+            "no": 10,
+            "klasifikasi": "Lainnya",
+            "ya": false,
+            "keterangan": ""
+          }
+        ],
+        "kewenangan": "Dinas Sosial Kota Tanjungbalai",
+        "prioritas": "Penting",
+        "rekomendasiTindakLanjut": "Segera lakukan sinkronisasi data NIK pengadu pada aplikasi SIKS-NG Dinsos Kota Tanjungbalai dan koordinasikan dengan Pendamping PKH Kecamatan Tanjungbalai Selatan untuk pengaktifan data anomali di Bank BRI.",
+        "hasilTelaahAnalisis": "Pengadu terdaftar di DTSEN namun mengalami gagal serah karena pembaruan sistem batch 3 Kemensos RI. Data kependudukan valid dan layak dipulihkan."
+      },
+      "penyelesaian": {
+        "tanggalPenyelesaian": "2026-09-24 14:00",
+        "petugasPelaksana": "Bambang Setiawan, S.STP",
+        "nipPelaksana": "19850920 200912 1 002",
+        "verifikasiKlarifikasi": "Telah dilakukan verifikasi via SIKS-NG dan kunjungan langsung oleh Pendamping Sosial PKH ke rumah Hj. Rohana Siagian.",
+        "tindakanDilakukan": "Melakukan perbaikan anomali rekening pada menu SIKS-NG serta menerbitkan Surat Pengantar Dinsos ke Kantor Cabang Bank BRI Tanjungbalai.",
+        "hasilPenyelesaian": "Bantuan PKH tahap 3 telah berhasil dikreditkan ke rekening KKS BRI pengadu senilai Rp 600.000,- pada tanggal 24 September 2026 dan dana telah ditarik dengan aman didampingi petugas pendamping.",
+        "dokumenBukti": [
+          {
+            "id": "dok-1",
+            "nama": "Berita_Acara_Kunjungan_PKH.pdf",
+            "ukuran": "1.1 MB",
+            "tanggal": "2026-09-24"
+          },
+          {
+            "id": "dok-2",
+            "nama": "Struk_Penarikan_Sukses_BRI.jpg",
+            "ukuran": "680 KB",
+            "tanggal": "2026-09-24"
+          }
+        ],
+        "statusPilihan": "Selesai \u2013 pengaduan ditindaklanjuti dan hasil telah disampaikan",
+        "statusKeterangan": "Masalah telah tuntas, saldo bantuan telah diterima oleh lansia penerima manfaat."
+      },
+      "konfirmasi": {
+        "tanggalPenyampaianHasil": "2026-09-25 10:00",
+        "mediaPenyampaian": "Tatap muka",
+        "tanggapanPengadu": "Pengadu Hj. Rohana didampingi anak menyampaikan rasa terima kasih atas respon cepat Dinas Sosial Kota Tanjungbalai yang membantu dana PKH lansia bisa cair kembali.",
+        "konfirmasi": "Pengadu menerima hasil penyelesaian",
+        "ttdPengadu": "Hj. Rohana Siagian",
+        "ttdPetugas": "Bambang Setiawan, S.STP",
+        "nipPetugas": "19850920 200912 1 002"
+      },
+      "status": "Selesai - Ditindaklanjuti",
+      "prioritas": "Penting",
+      "kewenangan": "Dinas Sosial Kota Tanjungbalai",
+      "slaTargetHari": 7,
+      "slaDeadline": "2026-09-27",
+      "auditLogs": [
+        {
+          "id": "log-1",
+          "timestamp": "2026-09-20 09:30",
+          "user": "Aisyah Putri, S.Sos",
+          "role": "PETUGAS_PENERIMA",
+          "action": "Penerimaan Pengaduan",
+          "detail": "Pengaduan masuk melalui Website, Nomor 460/00001/PDM/DINSOS/2026 dibuat otomatis."
+        },
+        {
+          "id": "log-2",
+          "timestamp": "2026-09-20 14:00",
+          "user": "Aisyah Putri, S.Sos",
+          "role": "PETUGAS_PENERIMA",
+          "action": "Verifikasi Berkas",
+          "detail": "Kelengkapan berkas KTP, KK, dan buku tabungan KKS diverifikasi lengkap."
+        },
+        {
+          "id": "log-3",
+          "timestamp": "2026-09-21 11:15",
+          "user": "Drs. Chairul Anwar, M.Si",
+          "role": "PETUGAS_PENELAAH",
+          "action": "Penelaahan & Klasifikasi",
+          "detail": "Klasifikasi: PKH & Bantuan Sosial, Prioritas: Penting, Kewenangan: Dinsos Tanjungbalai."
+        },
+        {
+          "id": "log-4",
+          "timestamp": "2026-09-22 09:00",
+          "user": "Bambang Setiawan, S.STP",
+          "role": "PETUGAS_PENYELESAIAN",
+          "action": "Tindak Lanjut Lapangan",
+          "detail": "Kunjungan verifikasi dan sinkronisasi SIKS-NG dengan Bank Penyalur."
+        },
+        {
+          "id": "log-5",
+          "timestamp": "2026-09-24 14:00",
+          "user": "Bambang Setiawan, S.STP",
+          "role": "PETUGAS_PENYELESAIAN",
+          "action": "Penyelesaian Pengaduan",
+          "detail": "Dana bantuan PKH sebesar Rp 600.000 berhasil cair ke rekening KKS pengadu."
+        },
+        {
+          "id": "log-6",
+          "timestamp": "2026-09-25 10:00",
+          "user": "Bambang Setiawan, S.STP",
+          "role": "PETUGAS_PENYELESAIAN",
+          "action": "Konfirmasi Pengadu",
+          "detail": "Pengadu menandatangani berita acara konfirmasi menerima hasil penyelesaian."
+        }
+      ],
+      "arsipDigital": [
+        {
+          "id": "ars-1",
+          "kategori": "Identitas",
+          "namaFile": "ktp_rohana.pdf",
+          "tanggal": "2026-09-20",
+          "ukuran": "1.2 MB",
+          "diunggahOleh": "Aisyah Putri, S.Sos"
+        },
+        {
+          "id": "ars-2",
+          "kategori": "Identitas",
+          "namaFile": "kk_rohana.pdf",
+          "tanggal": "2026-09-20",
+          "ukuran": "1.4 MB",
+          "diunggahOleh": "Aisyah Putri, S.Sos"
+        },
+        {
+          "id": "ars-3",
+          "kategori": "Bukti Pengaduan",
+          "namaFile": "struk_atm.jpg",
+          "tanggal": "2026-09-20",
+          "ukuran": "420 KB",
+          "diunggahOleh": "Aisyah Putri, S.Sos"
+        },
+        {
+          "id": "ars-4",
+          "kategori": "Penelaahan",
+          "namaFile": "Lembar_Telaah_000001.pdf",
+          "tanggal": "2026-09-21",
+          "ukuran": "350 KB",
+          "diunggahOleh": "Drs. Chairul Anwar, M.Si"
+        },
+        {
+          "id": "ars-5",
+          "kategori": "Penyelesaian",
+          "namaFile": "Berita_Acara_Kunjungan_PKH.pdf",
+          "tanggal": "2026-09-24",
+          "ukuran": "1.1 MB",
+          "diunggahOleh": "Bambang Setiawan, S.STP"
+        },
+        {
+          "id": "ars-6",
+          "kategori": "Konfirmasi",
+          "namaFile": "Form_Konfirmasi_Pengadu.pdf",
+          "tanggal": "2026-09-25",
+          "ukuran": "290 KB",
+          "diunggahOleh": "Bambang Setiawan, S.STP"
+        }
+      ]
+    },
+    {
+      "id": "complaint-002",
+      "nomorPengaduan": "460/00002/PDM/DINSOS/2026",
+      "tanggalPenerimaan": "2026-09-25 13:45",
+      "mediaPengaduan": "Tatap Muka",
+      "petugasPenerima": "Aisyah Putri, S.Sos",
+      "namaPengadu": "Suherman Marpaung",
+      "nik": "1274021208850001",
+      "alamat": "Jl. Jati Kel. Sirantau, Kec. Datuk Bandar, Kota Tanjungbalai",
+      "nomorTelepon": "085270119234",
+      "email": "suherman.marpaung@yahoo.com",
+      "statusHubungan": "Keluarga",
+      "pokokPengaduan": "Permohonan Bantuan Kursi Roda untuk Anak Penyandang Disabilitas Fisik (Cerebral Palsy)",
+      "uraianKronologi": "Anak kami bernama Dimas (usia 11 tahun) menderita kelumpuhan motorik sejak kecil. Kursi roda lama sudah patah dan kekecilan. Keluarga tergolong prasejahtera (buruh harian lepas) dan tidak mampu membeli kursi roda khusus sendiri.",
+      "permintaanHarapan": "Memohon bantuan alat bantu kursi roda adaptif disabilitas melalui program rehabilitasi sosial Dinas Sosial Kota Tanjungbalai.",
+      "catatanPetugasPenerima": "Surat keterangan dokter dan surat keterangan tidak mampu dari lurah Sirantau terlampir.",
+      "ttdPengadu": "Suherman Marpaung",
+      "ttdPetugasPenerima": "Aisyah Putri, S.Sos",
+      "dokumenPendukung": [
+        {
+          "no": 1,
+          "uraian": "KTP/Identitas",
+          "ada": true,
+          "keterangan": "KTP Orang Tua",
+          "fileName": "ktp_suherman.pdf",
+          "fileSize": "1.1 MB",
+          "uploadDate": "2026-09-25"
+        },
+        {
+          "no": 2,
+          "uraian": "KK",
+          "ada": true,
+          "keterangan": "KK mencantumkan nama anak",
+          "fileName": "kk_suherman.pdf",
+          "fileSize": "1.3 MB",
+          "uploadDate": "2026-09-25"
+        },
+        {
+          "no": 3,
+          "uraian": "Surat/Dokumen resmi",
+          "ada": true,
+          "keterangan": "SKTM Lurah Sirantau & Surat Medis RSU Tanjungbalai",
+          "fileName": "sktm_medis.pdf",
+          "fileSize": "1.8 MB",
+          "uploadDate": "2026-09-25"
+        },
+        {
+          "no": 4,
+          "uraian": "Foto/Video",
+          "ada": true,
+          "keterangan": "Foto kondisi anak Dimas",
+          "fileName": "foto_dimas.jpg",
+          "fileSize": "2.4 MB",
+          "uploadDate": "2026-09-25"
+        },
+        {
+          "no": 5,
+          "uraian": "Bukti transaksi/data",
+          "ada": false,
+          "keterangan": ""
+        },
+        {
+          "no": 6,
+          "uraian": "Dokumen lainnya",
+          "ada": false,
+          "keterangan": ""
+        }
+      ],
+      "telaah": {
+        "tanggalTelaah": "2026-09-26 10:00",
+        "petugasPenelaah": "Drs. Chairul Anwar, M.Si",
+        "nipPenelaah": "19760315 200501 1 008",
+        "aspekTelaah": [
+          {
+            "no": 1,
+            "aspek": "Identitas pengadu dapat diverifikasi",
+            "ya": true,
+            "catatan": "Data domisili valid di Datuk Bandar"
+          },
+          {
+            "no": 2,
+            "aspek": "Materi pengaduan jelas dan dapat ditindaklanjuti",
+            "ya": true,
+            "catatan": "Kebutuhan alat bantu disabilitas anak"
+          },
+          {
+            "no": 3,
+            "aspek": "Pengaduan berkaitan dengan tugas/fungsi Dinas Sosial",
+            "ya": true,
+            "catatan": "Tupoksi Seksi Rehabilitasi Sosial Anak dan Disabilitas"
+          },
+          {
+            "no": 4,
+            "aspek": "Pengaduan memiliki bukti/dokumen pendukung",
+            "ya": true,
+            "catatan": "SKTM dan rekam medis lengkap"
+          },
+          {
+            "no": 5,
+            "aspek": "Pengaduan membutuhkan koordinasi dengan unit/instansi lain",
+            "ya": false,
+            "catatan": "Stok bantuan tersedia di gudang logistik Dinsos"
+          },
+          {
+            "no": 6,
+            "aspek": "Pengaduan merupakan pengulangan/duplikasi pengaduan sebelumnya",
+            "ya": false,
+            "catatan": "Belum pernah menerima alat bantu dari Dinsos"
+          }
+        ],
+        "klasifikasiList": [
+          {
+            "no": 1,
+            "klasifikasi": "Data bantuan sosial / DTSEN",
+            "ya": false,
+            "keterangan": ""
+          },
+          {
+            "no": 2,
+            "klasifikasi": "PKH / Program Sembako / bantuan sosial lainnya",
+            "ya": false,
+            "keterangan": ""
+          },
+          {
+            "no": 3,
+            "klasifikasi": "PBI JKN / kepesertaan jaminan sosial",
+            "ya": false,
+            "keterangan": ""
+          },
+          {
+            "no": 4,
+            "klasifikasi": "Rehabilitasi sosial / penyandang disabilitas / lansia",
+            "ya": true,
+            "keterangan": "Alat bantu disabilitas"
+          },
+          {
+            "no": 5,
+            "klasifikasi": "Perlindungan sosial / kebencanaan",
+            "ya": false,
+            "keterangan": ""
+          },
+          {
+            "no": 6,
+            "klasifikasi": "Lembaga Kesejahteraan Sosial (LKS)",
+            "ya": false,
+            "keterangan": ""
+          },
+          {
+            "no": 7,
+            "klasifikasi": "Pelayanan mobil jenazah",
+            "ya": false,
+            "keterangan": ""
+          },
+          {
+            "no": 8,
+            "klasifikasi": "Pengaduan pelayanan publik",
+            "ya": false,
+            "keterangan": ""
+          },
+          {
+            "no": 9,
+            "klasifikasi": "Data kependudukan/domisili yang perlu verifikasi",
+            "ya": false,
+            "keterangan": ""
+          },
+          {
+            "no": 10,
+            "klasifikasi": "Lainnya",
+            "ya": false,
+            "keterangan": ""
+          }
+        ],
+        "kewenangan": "Dinas Sosial Kota Tanjungbalai",
+        "prioritas": "Penting",
+        "rekomendasiTindakLanjut": "Jadwalkan asesmen kebutuhan fisik oleh pekerja sosial dan alokasikan 1 (satu) unit kursi roda adaptif anak dari program Asistensi Rehabilitasi Sosial (ATENSI).",
+        "hasilTelaahAnalisis": "Pengadu memenuhi kriteria penerima manfaat program rehabilitasi sosial bagi anak berkebutuhan khusus keluarga prasejahtera."
+      },
+      "status": "Sedang Diproses",
+      "prioritas": "Penting",
+      "kewenangan": "Dinas Sosial Kota Tanjungbalai",
+      "slaTargetHari": 7,
+      "slaDeadline": "2026-10-02",
+      "auditLogs": [
+        {
+          "id": "log-201",
+          "timestamp": "2026-09-25 13:45",
+          "user": "Aisyah Putri, S.Sos",
+          "role": "PETUGAS_PENERIMA",
+          "action": "Penerimaan Pengaduan",
+          "detail": "Pengaduan tatap muka dicatat di sistem."
+        },
+        {
+          "id": "log-202",
+          "timestamp": "2026-09-26 10:00",
+          "user": "Drs. Chairul Anwar, M.Si",
+          "role": "PETUGAS_PENELAAH",
+          "action": "Penelaahan & Klasifikasi",
+          "detail": "Ditetapkan klasifikasi Rehabilitasi Sosial Disabilitas, siap ditindaklanjuti."
+        },
+        {
+          "id": "log-203",
+          "timestamp": "2026-09-27 09:30",
+          "user": "Bambang Setiawan, S.STP",
+          "role": "PETUGAS_PENYELESAIAN",
+          "action": "Penjadwalan Serah Terima",
+          "detail": "Petugas lapangan menjadwalkan penyerahan kursi roda pada 1 Oktober 2026."
+        }
+      ],
+      "arsipDigital": [
+        {
+          "id": "ars-201",
+          "kategori": "Identitas",
+          "namaFile": "ktp_suherman.pdf",
+          "tanggal": "2026-09-25",
+          "ukuran": "1.1 MB",
+          "diunggahOleh": "Aisyah Putri, S.Sos"
+        },
+        {
+          "id": "ars-202",
+          "kategori": "Bukti Pengaduan",
+          "namaFile": "sktm_medis.pdf",
+          "tanggal": "2026-09-25",
+          "ukuran": "1.8 MB",
+          "diunggahOleh": "Aisyah Putri, S.Sos"
+        },
+        {
+          "id": "ars-203",
+          "kategori": "Penelaahan",
+          "namaFile": "Telaah_Disabilitas_000002.pdf",
+          "tanggal": "2026-09-26",
+          "ukuran": "410 KB",
+          "diunggahOleh": "Drs. Chairul Anwar, M.Si"
+        }
+      ]
+    },
+    {
+      "id": "complaint-003",
+      "nomorPengaduan": "460/00003/PDM/DINSOS/2026",
+      "tanggalPenerimaan": "2026-09-22 08:30",
+      "mediaPengaduan": "WhatsApp",
+      "petugasPenerima": "Aisyah Putri, S.Sos",
+      "namaPengadu": "Muhammad Ilham Batubara",
+      "nik": "1274041903920005",
+      "alamat": "Jl. Asahan KM 3, Kel. Sei Tualang Raso, Kota Tanjungbalai",
+      "nomorTelepon": "082165998123",
+      "email": "ilham.batubara@gmail.com",
+      "statusHubungan": "Diri sendiri",
+      "pokokPengaduan": "NIK Terblokir / Ganda dengan Warga Daerah Lain sehingga Tidak Bisa Didaftarkan PBI JKN",
+      "uraianKronologi": "Ketika hendak mengurus kepesertaan BPJS PBI yang ditanggung APBD di loket Dinas Sosial, data NIK saya dinyatakan tidak aktif / ganda dengan penduduk di Kabupaten Asahan oleh sistem SIAK Kemendagri.",
+      "permintaanHarapan": "Mohon dibantu penyelesaian data kependudukan dan NIK agar dapat terdaftar sebagai peserta jaminan kesehatan.",
+      "catatanPetugasPenerima": "Pengaduan terkait keabsahan data identitas kependudukan Dukcapil.",
+      "ttdPengadu": "M. Ilham Batubara",
+      "ttdPetugasPenerima": "Aisyah Putri, S.Sos",
+      "dokumenPendukung": [
+        {
+          "no": 1,
+          "uraian": "KTP/Identitas",
+          "ada": true,
+          "keterangan": "Foto e-KTP fisik",
+          "fileName": "ktp_ilham.jpg",
+          "fileSize": "850 KB",
+          "uploadDate": "2026-09-22"
+        },
+        {
+          "no": 2,
+          "uraian": "KK",
+          "ada": true,
+          "keterangan": "Kartu Keluarga Tanjungbalai",
+          "fileName": "kk_ilham.pdf",
+          "fileSize": "1.2 MB",
+          "uploadDate": "2026-09-22"
+        },
+        {
+          "no": 3,
+          "uraian": "Surat/Dokumen resmi",
+          "ada": true,
+          "keterangan": "Tangkapan layar penolakan BPJS Kesehatan",
+          "fileName": "screenshot_bpjs.jpg",
+          "fileSize": "520 KB",
+          "uploadDate": "2026-09-22"
+        },
+        {
+          "no": 4,
+          "uraian": "Foto/Video",
+          "ada": false,
+          "keterangan": ""
+        },
+        {
+          "no": 5,
+          "uraian": "Bukti transaksi/data",
+          "ada": false,
+          "keterangan": ""
+        },
+        {
+          "no": 6,
+          "uraian": "Dokumen lainnya",
+          "ada": false,
+          "keterangan": ""
+        }
+      ],
+      "telaah": {
+        "tanggalTelaah": "2026-09-22 14:00",
+        "petugasPenelaah": "Drs. Chairul Anwar, M.Si",
+        "nipPenelaah": "19760315 200501 1 008",
+        "aspekTelaah": [
+          {
+            "no": 1,
+            "aspek": "Identitas pengadu dapat diverifikasi",
+            "ya": true,
+            "catatan": "Identitas jelas"
+          },
+          {
+            "no": 2,
+            "aspek": "Materi pengaduan jelas dan dapat ditindaklanjuti",
+            "ya": true,
+            "catatan": "Terkait anomali data kependudukan"
+          },
+          {
+            "no": 3,
+            "aspek": "Pengaduan berkaitan dengan tugas/fungsi Dinas Sosial",
+            "ya": false,
+            "catatan": "Bukan kewenangan teknis Dinsos, melainkan Dinas Kependudukan dan Pencatatan Sipil"
+          },
+          {
+            "no": 4,
+            "aspek": "Pengaduan memiliki bukti/dokumen pendukung",
+            "ya": true,
+            "catatan": "Dokumen lengkap"
+          },
+          {
+            "no": 5,
+            "aspek": "Pengaduan membutuhkan koordinasi dengan unit/instansi lain",
+            "ya": true,
+            "catatan": "Wajib disalurkan ke Disdukcapil Kota Tanjungbalai"
+          },
+          {
+            "no": 6,
+            "aspek": "Pengaduan merupakan pengulangan/duplikasi pengaduan sebelumnya",
+            "ya": false,
+            "catatan": ""
+          }
+        ],
+        "klasifikasiList": [
+          {
+            "no": 1,
+            "klasifikasi": "Data bantuan sosial / DTSEN",
+            "ya": false,
+            "keterangan": ""
+          },
+          {
+            "no": 2,
+            "klasifikasi": "PKH / Program Sembako / bantuan sosial lainnya",
+            "ya": false,
+            "keterangan": ""
+          },
+          {
+            "no": 3,
+            "klasifikasi": "PBI JKN / kepesertaan jaminan sosial",
+            "ya": true,
+            "keterangan": "Tujuan akhir pendaftaran PBI JKN"
+          },
+          {
+            "no": 4,
+            "klasifikasi": "Rehabilitasi sosial / penyandang disabilitas / lansia",
+            "ya": false,
+            "keterangan": ""
+          },
+          {
+            "no": 5,
+            "klasifikasi": "Perlindungan sosial / kebencanaan",
+            "ya": false,
+            "keterangan": ""
+          },
+          {
+            "no": 6,
+            "klasifikasi": "Lembaga Kesejahteraan Sosial (LKS)",
+            "ya": false,
+            "keterangan": ""
+          },
+          {
+            "no": 7,
+            "klasifikasi": "Pelayanan mobil jenazah",
+            "ya": false,
+            "keterangan": ""
+          },
+          {
+            "no": 8,
+            "klasifikasi": "Pengaduan pelayanan publik",
+            "ya": false,
+            "keterangan": ""
+          },
+          {
+            "no": 9,
+            "klasifikasi": "Data kependudukan/domisili yang perlu verifikasi",
+            "ya": true,
+            "keterangan": "Masalah utama: NIK Ganda"
+          },
+          {
+            "no": 10,
+            "klasifikasi": "Lainnya",
+            "ya": false,
+            "keterangan": ""
+          }
+        ],
+        "kewenangan": "Perangkat Daerah lain di Kota Tanjungbalai",
+        "prioritas": "Biasa",
+        "rekomendasiTindakLanjut": "Terbitkan Surat Penyaluran Pengaduan Bukan Kewenangan kepada Kepala Dinas Kependudukan dan Pencatatan Sipil Kota Tanjungbalai untuk pembersihan dan aktivasi NIK.",
+        "hasilTelaahAnalisis": "Substansi pengaduan adalah pembenahan administrasi kependudukan yang menjadi tupoksi absolut Disdukcapil sesuai UU No. 24 Tahun 2013."
+      },
+      "penyaluran": {
+        "tanggalPenyaluran": "2026-09-23 09:00",
+        "nomorSuratPenyaluran": "460/042/DS/2026",
+        "dari": "Dinas Sosial Kota Tanjungbalai",
+        "kepada": "Kepala Dinas Kependudukan dan Pencatatan Sipil Kota Tanjungbalai",
+        "namaPengadu": "Muhammad Ilham Batubara",
+        "pokokPengaduan": "NIK Terblokir / Ganda dengan Warga Daerah Lain sehingga Tidak Bisa Didaftarkan PBI JKN",
+        "hasilPenelaahan": "Pengaduan bukan kewenangan teknis Dinas Sosial Kota Tanjungbalai, melainkan memerlukan verifikasi biometrik dan penunggalan data kependudukan oleh Disdukcapil Kota Tanjungbalai.",
+        "alasanPenyaluran": "Sesuai dengan ketentuan administrasi kependudukan, pembatalan duplikasi NIK dan aktivasi status adminduk sepenuhnya merupakan kewenangan Disdukcapil.",
+        "tujuanList": [
+          {
+            "no": 1,
+            "tujuanUnit": "Dinas Kependudukan dan Pencatatan Sipil Kota Tanjungbalai",
+            "jenisPenyaluran": "Surat",
+            "keterangan": "Surat resmi fisik dan tembusan elektronik"
+          },
+          {
+            "no": 2,
+            "tujuanUnit": "Bagian Organisasi Setdakot Tanjungbalai (Layanan SP4N)",
+            "jenisPenyaluran": "Sistem",
+            "keterangan": "Monitoring terpadu antar OPD"
+          }
+        ],
+        "statusMonitoring": "Surat telah diterima oleh Disdukcapil (Tanda terima No. 470/118/Disdukcapil/2026). Petugas Dinsos terus memonitor.",
+        "pejabatNama": "ZUL ABDIMAN, S.Kom., M.M",
+        "pejabatNip": "19741228 200003 1 003"
+      },
+      "status": "Diteruskan",
+      "prioritas": "Biasa",
+      "kewenangan": "Perangkat Daerah lain di Kota Tanjungbalai",
+      "slaTargetHari": 14,
+      "slaDeadline": "2026-10-06",
+      "auditLogs": [
+        {
+          "id": "log-301",
+          "timestamp": "2026-09-22 08:30",
+          "user": "Aisyah Putri, S.Sos",
+          "role": "PETUGAS_PENERIMA",
+          "action": "Penerimaan Pengaduan",
+          "detail": "Pengaduan masuk dari WhatsApp resmi Dinsos Tanjungbalai."
+        },
+        {
+          "id": "log-302",
+          "timestamp": "2026-09-22 14:00",
+          "user": "Drs. Chairul Anwar, M.Si",
+          "role": "PETUGAS_PENELAAH",
+          "action": "Penelaahan & Penentuan Kewenangan",
+          "detail": "Ditetapkan bukan kewenangan Dinsos melainkan Disdukcapil Tanjungbalai."
+        },
+        {
+          "id": "log-303",
+          "timestamp": "2026-09-23 09:00",
+          "user": "Zul Abdiman, S.Kom., M.M",
+          "role": "ADMIN",
+          "action": "Penerbitan Surat Penyaluran",
+          "detail": "Surat Penyaluran No. 460/042/DS/2026 ditandatangani dan dikirim ke Disdukcapil."
+        }
+      ],
+      "arsipDigital": [
+        {
+          "id": "ars-301",
+          "kategori": "Identitas",
+          "namaFile": "ktp_ilham.jpg",
+          "tanggal": "2026-09-22",
+          "ukuran": "850 KB",
+          "diunggahOleh": "Aisyah Putri, S.Sos"
+        },
+        {
+          "id": "ars-302",
+          "kategori": "Surat Penyaluran",
+          "namaFile": "Surat_Penyaluran_460_042_DS_2026.pdf",
+          "tanggal": "2026-09-23",
+          "ukuran": "490 KB",
+          "diunggahOleh": "Zul Abdiman, S.Kom., M.M"
+        }
+      ]
+    },
+    {
+      "id": "complaint-004",
+      "nomorPengaduan": "460/00004/PDM/DINSOS/2026",
+      "tanggalPenerimaan": "2026-09-29 18:20",
+      "mediaPengaduan": "Telepon",
+      "petugasPenerima": "Aisyah Putri, S.Sos",
+      "namaPengadu": "Kaharuddin Panjaitan",
+      "nik": "1274030101700004",
+      "alamat": "LK. V Kel. Perjuangan, Kec. Teluk Nibung, Kota Tanjungbalai",
+      "nomorTelepon": "081397445012",
+      "email": "",
+      "statusHubungan": "Masyarakat",
+      "pokokPengaduan": "Kebutuhan Mendesak Pelayanan Mobil Jenazah Gratis untuk Warga Tidak Mampu di Teluk Nibung",
+      "uraianKronologi": "Warga kami bapak Hasan Basri (usia 68 tahun) yang merupakan tuna wisma dan hidup sebatang kara telah berpulang ke rahmatullah petang ini di gubuk darurat Teluk Nibung. Warga sekitar gotong royong mengurus jenazah namun terkendala mobil pengantar ke pemakaman umum.",
+      "permintaanHarapan": "Memohon bantuan operasional Mobil Jenazah Gratis Dinas Sosial Kota Tanjungbalai untuk pemakaman malam ini atau besok pagi.",
+      "catatanPetugasPenerima": "Panggilan darurat melalui telepon piket siaga Dinsos. Telah dikonfirmasi kepada Kepling V Perjuangan.",
+      "ttdPengadu": "Kaharuddin Panjaitan (Lisan/Telepon)",
+      "ttdPetugasPenerima": "Aisyah Putri, S.Sos",
+      "dokumenPendukung": [
+        {
+          "no": 1,
+          "uraian": "KTP/Identitas",
+          "ada": true,
+          "keterangan": "Foto KTP Pengadu dan Almarhum",
+          "fileName": "ktp_jenazah.jpg",
+          "fileSize": "650 KB",
+          "uploadDate": "2026-09-29"
+        },
+        {
+          "no": 2,
+          "uraian": "KK",
+          "ada": false,
+          "keterangan": "Almarhum sebatang kara"
+        },
+        {
+          "no": 3,
+          "uraian": "Surat/Dokumen resmi",
+          "ada": true,
+          "keterangan": "Surat Keterangan Kematian Puskesmas Teluk Nibung",
+          "fileName": "surat_kematian.pdf",
+          "fileSize": "980 KB",
+          "uploadDate": "2026-09-29"
+        },
+        {
+          "no": 4,
+          "uraian": "Foto/Video",
+          "ada": true,
+          "keterangan": "Foto lokasi kedukaan",
+          "fileName": "foto_lokasi.jpg",
+          "fileSize": "1.5 MB",
+          "uploadDate": "2026-09-29"
+        },
+        {
+          "no": 5,
+          "uraian": "Bukti transaksi/data",
+          "ada": false,
+          "keterangan": ""
+        },
+        {
+          "no": 6,
+          "uraian": "Dokumen lainnya",
+          "ada": false,
+          "keterangan": ""
+        }
+      ],
+      "telaah": {
+        "tanggalTelaah": "2026-09-29 18:45",
+        "petugasPenelaah": "Drs. Chairul Anwar, M.Si",
+        "nipPenelaah": "19760315 200501 1 008",
+        "aspekTelaah": [
+          {
+            "no": 1,
+            "aspek": "Identitas pengadu dapat diverifikasi",
+            "ya": true,
+            "catatan": "Dikonfirmasi oleh Kepala Lingkungan"
+          },
+          {
+            "no": 2,
+            "aspek": "Materi pengaduan jelas dan dapat ditindaklanjuti",
+            "ya": true,
+            "catatan": "Kebutuhan armada mobil jenazah"
+          },
+          {
+            "no": 3,
+            "aspek": "Pengaduan berkaitan dengan tugas/fungsi Dinas Sosial",
+            "ya": true,
+            "catatan": "Layanan mobil jenazah gratis Dinsos Tanjungbalai"
+          },
+          {
+            "no": 4,
+            "aspek": "Pengaduan memiliki bukti/dokumen pendukung",
+            "ya": true,
+            "catatan": "Surat kematian terlampir"
+          },
+          {
+            "no": 5,
+            "aspek": "Pengaduan membutuhkan koordinasi dengan unit/instansi lain",
+            "ya": false,
+            "catatan": "Unit Reaksi Cepat Dinsos langsung meluncur"
+          },
+          {
+            "no": 6,
+            "aspek": "Pengaduan merupakan pengulangan/duplikasi pengaduan sebelumnya",
+            "ya": false,
+            "catatan": ""
+          }
+        ],
+        "klasifikasiList": [
+          {
+            "no": 1,
+            "klasifikasi": "Data bantuan sosial / DTSEN",
+            "ya": false,
+            "keterangan": ""
+          },
+          {
+            "no": 2,
+            "klasifikasi": "PKH / Program Sembako / bantuan sosial lainnya",
+            "ya": false,
+            "keterangan": ""
+          },
+          {
+            "no": 3,
+            "klasifikasi": "PBI JKN / kepesertaan jaminan sosial",
+            "ya": false,
+            "keterangan": ""
+          },
+          {
+            "no": 4,
+            "klasifikasi": "Rehabilitasi sosial / penyandang disabilitas / lansia",
+            "ya": true,
+            "keterangan": "Pemerlu Pelayanan Kesejahteraan Sosial (PPKS) Terlantar"
+          },
+          {
+            "no": 5,
+            "klasifikasi": "Perlindungan sosial / kebencanaan",
+            "ya": false,
+            "keterangan": ""
+          },
+          {
+            "no": 6,
+            "klasifikasi": "Lembaga Kesejahteraan Sosial (LKS)",
+            "ya": false,
+            "keterangan": ""
+          },
+          {
+            "no": 7,
+            "klasifikasi": "Pelayanan mobil jenazah",
+            "ya": true,
+            "keterangan": "Mobil Jenazah Gratis Dinsos"
+          },
+          {
+            "no": 8,
+            "klasifikasi": "Pengaduan pelayanan publik",
+            "ya": false,
+            "keterangan": ""
+          },
+          {
+            "no": 9,
+            "klasifikasi": "Data kependudukan/domisili yang perlu verifikasi",
+            "ya": false,
+            "keterangan": ""
+          },
+          {
+            "no": 10,
+            "klasifikasi": "Lainnya",
+            "ya": false,
+            "keterangan": ""
+          }
+        ],
+        "kewenangan": "Dinas Sosial Kota Tanjungbalai",
+        "prioritas": "Mendesak",
+        "rekomendasiTindakLanjut": "Mobilisasi segera unit armada Mobil Jenazah Dinsos BK-1029-TB beserta 2 personil Tagana untuk membantu proses fardhu kifayah dan pemakaman.",
+        "hasilTelaahAnalisis": "Kasus darurat kemanusiaan bagi warga terlantar yang harus ditangani dalam tempo maksimal 3 jam."
+      },
+      "status": "Sedang Diproses",
+      "prioritas": "Mendesak",
+      "kewenangan": "Dinas Sosial Kota Tanjungbalai",
+      "slaTargetHari": 1,
+      "slaDeadline": "2026-09-30",
+      "auditLogs": [
+        {
+          "id": "log-401",
+          "timestamp": "2026-09-29 18:20",
+          "user": "Aisyah Putri, S.Sos",
+          "role": "PETUGAS_PENERIMA",
+          "action": "Penerimaan Pengaduan Darurat",
+          "detail": "Panggilan telepon darurat dicatat dan diteruskan ke tim piket."
+        },
+        {
+          "id": "log-402",
+          "timestamp": "2026-09-29 18:45",
+          "user": "Drs. Chairul Anwar, M.Si",
+          "role": "PETUGAS_PENELAAH",
+          "action": "Penelaahan Cepat",
+          "detail": "Status ditetapkan prioritas Mendesak (Mobil Jenazah Gratis)."
+        },
+        {
+          "id": "log-403",
+          "timestamp": "2026-09-29 19:10",
+          "user": "Bambang Setiawan, S.STP",
+          "role": "PETUGAS_PENYELESAIAN",
+          "action": "Disposisi Armada",
+          "detail": "Sopir dan personil Dinsos diberangkatkan ke Teluk Nibung."
+        }
+      ],
+      "arsipDigital": [
+        {
+          "id": "ars-401",
+          "kategori": "Bukti Pengaduan",
+          "namaFile": "surat_kematian.pdf",
+          "tanggal": "2026-09-29",
+          "ukuran": "980 KB",
+          "diunggahOleh": "Aisyah Putri, S.Sos"
+        }
+      ]
+    },
+    {
+      "id": "complaint-005",
+      "nomorPengaduan": "460/00005/PDM/DINSOS/2026",
+      "tanggalPenerimaan": "2026-09-30 08:15",
+      "mediaPengaduan": "Website",
+      "petugasPenerima": "Aisyah Putri, S.Sos",
+      "namaPengadu": "Fatimah Az-Zahra",
+      "nik": "1274056211990003",
+      "alamat": "Jl. Lingkar Utara LK. II, Kel. Sei Raja, Kec. Sei Tualang Raso",
+      "nomorTelepon": "081267884432",
+      "email": "fatimah.zahra@gmail.com",
+      "statusHubungan": "Masyarakat",
+      "pokokPengaduan": "Laporan Penyaluran Beras Bantuan Pangan Cadangan Pangan Pemerintah Tidak Merata",
+      "uraianKronologi": "Di lingkungan kami terdapat beberapa warga mampu yang memiliki ruko dan mobil yang justru terdaftar menerima paket beras 10kg dari bantuan pangan, sedangkan janda jompo lansia di sebelah rumah saya tidak pernah terdaftar sama sekali.",
+      "permintaanHarapan": "Mohon dilakukan verifikasi faktual lapangan (ground checking) dan audit data penerima di kelurahan Sei Raja.",
+      "catatanPetugasPenerima": "Pengaduan baru masuk melalui portal online SIPMAS. Membutuhkan verifikasi berkas dan penelaahan.",
+      "ttdPengadu": "Fatimah Az-Zahra",
+      "ttdPetugasPenerima": "Aisyah Putri, S.Sos",
+      "dokumenPendukung": [
+        {
+          "no": 1,
+          "uraian": "KTP/Identitas",
+          "ada": true,
+          "keterangan": "KTP Pelapor",
+          "fileName": "ktp_fatimah.pdf",
+          "fileSize": "920 KB",
+          "uploadDate": "2026-09-30"
+        },
+        {
+          "no": 2,
+          "uraian": "KK",
+          "ada": false,
+          "keterangan": ""
+        },
+        {
+          "no": 3,
+          "uraian": "Surat/Dokumen resmi",
+          "ada": false,
+          "keterangan": ""
+        },
+        {
+          "no": 4,
+          "uraian": "Foto/Video",
+          "ada": true,
+          "keterangan": "Foto daftar tempel penerima di kantor lurah",
+          "fileName": "foto_daftar.jpg",
+          "fileSize": "1.7 MB",
+          "uploadDate": "2026-09-30"
+        },
+        {
+          "no": 5,
+          "uraian": "Bukti transaksi/data",
+          "ada": false,
+          "keterangan": ""
+        },
+        {
+          "no": 6,
+          "uraian": "Dokumen lainnya",
+          "ada": false,
+          "keterangan": ""
+        }
+      ],
+      "status": "Baru",
+      "prioritas": "Biasa",
+      "kewenangan": "Dinas Sosial Kota Tanjungbalai",
+      "slaTargetHari": 14,
+      "slaDeadline": "2026-10-14",
+      "auditLogs": [
+        {
+          "id": "log-501",
+          "timestamp": "2026-09-30 08:15",
+          "user": "Fatimah Az-Zahra (Masyarakat)",
+          "role": "MASYARAKAT",
+          "action": "Input Pengaduan Baru",
+          "detail": "Pengaduan publik berhasil disubmit dengan nomor 460/00005/PDM/DINSOS/2026."
+        }
+      ],
+      "arsipDigital": [
+        {
+          "id": "ars-501",
+          "kategori": "Identitas",
+          "namaFile": "ktp_fatimah.pdf",
+          "tanggal": "2026-09-30",
+          "ukuran": "920 KB",
+          "diunggahOleh": "Aisyah Putri, S.Sos"
+        },
+        {
+          "id": "ars-502",
+          "kategori": "Bukti Pengaduan",
+          "namaFile": "foto_daftar.jpg",
+          "tanggal": "2026-09-30",
+          "ukuran": "1.7 MB",
+          "diunggahOleh": "Aisyah Putri, S.Sos"
+        }
+      ]
+    },
+    {
+      "id": "complaint-006",
+      "nomorPengaduan": "460/00006/PDM/DINSOS/2026",
+      "tanggalPenerimaan": "2026-01-14 10:15",
+      "mediaPengaduan": "Tatap Muka",
+      "petugasPenerima": "Aisyah Putri, S.Sos",
+      "namaPengadu": "H. Ruslan Efendi",
+      "nik": "1274011505680002",
+      "alamat": "Jl. Sutomo Kel. Perwira, Kec. Tanjungbalai Selatan",
+      "nomorTelepon": "081397004455",
+      "email": "ruslan.efendi@gmail.com",
+      "statusHubungan": "Masyarakat",
+      "pokokPengaduan": "Permohonan Bantuan Tanggap Darurat Bencana Banjir Rob Pasang Air Laut",
+      "uraianKronologi": "Air pasang rob merendam 45 rumah warga di bantaran Sungai Silau selama 3 hari berturut-turut.",
+      "permintaanHarapan": "Bantuan sembako dan pendirian dapur umum darurat.",
+      "catatanPetugasPenerima": "Penyaluran logistik darurat beras dan selimut telah selesai diserahkan.",
+      "ttdPengadu": "H. Ruslan Efendi",
+      "ttdPetugasPenerima": "Aisyah Putri, S.Sos",
+      "dokumenPendukung": [],
+      "status": "Selesai - Ditindaklanjuti",
+      "prioritas": "Mendesak",
+      "kewenangan": "Dinas Sosial Kota Tanjungbalai",
+      "slaTargetHari": 3,
+      "slaDeadline": "2026-01-17",
+      "auditLogs": [],
+      "arsipDigital": []
+    },
+    {
+      "id": "complaint-007",
+      "nomorPengaduan": "460/00007/PDM/DINSOS/2026",
+      "tanggalPenerimaan": "2026-02-18 09:30",
+      "mediaPengaduan": "Surat",
+      "petugasPenerima": "Aisyah Putri, S.Sos",
+      "namaPengadu": "Nurlela Panjaitan",
+      "nik": "1274035002770001",
+      "alamat": "Jl. Arteri Kel. Sirantau, Kec. Datuk Bandar",
+      "nomorTelepon": "085261448899",
+      "email": "nurlela.panjaitan@yahoo.com",
+      "statusHubungan": "Masyarakat",
+      "pokokPengaduan": "Pengusulan PBI-JKN (BPJS Kesehatan Gratis dari APBD Tanjungbalai)",
+      "uraianKronologi": "Warga menderita katarak membutuhkan operasi mata namun tidak memiliki jaminan kesehatan.",
+      "permintaanHarapan": "Didaftarkan ke segmen kepesertaan PBI APBD Kota Tanjungbalai.",
+      "catatanPetugasPenerima": "Surat rekomendasi PBI telah diverifikasi dan disetujui.",
+      "ttdPengadu": "Nurlela Panjaitan",
+      "ttdPetugasPenerima": "Aisyah Putri, S.Sos",
+      "dokumenPendukung": [],
+      "status": "Selesai - Ditindaklanjuti",
+      "prioritas": "Penting",
+      "kewenangan": "Dinas Sosial Kota Tanjungbalai",
+      "slaTargetHari": 7,
+      "slaDeadline": "2026-02-25",
+      "auditLogs": [],
+      "arsipDigital": []
+    },
+    {
+      "id": "complaint-008",
+      "nomorPengaduan": "460/00008/PDM/DINSOS/2026",
+      "tanggalPenerimaan": "2026-03-10 11:00",
+      "mediaPengaduan": "Website",
+      "petugasPenerima": "Aisyah Putri, S.Sos",
+      "namaPengadu": "Dedi Kurniawan",
+      "nik": "1274041209920005",
+      "alamat": "Jl. MT Haryono Kel. Selat Tanjung Medan",
+      "nomorTelepon": "082165337711",
+      "email": "dedi.kurniawan@gmail.com",
+      "statusHubungan": "Keluarga",
+      "pokokPengaduan": "Layanan Rujukan Rehabilitasi Sosial Korban NAPZA Anak",
+      "uraianKronologi": "Keluarga memohon pendampingan pekerja sosial untuk rujukan rehabilitasi medis dan sosial di BNN/Balai Insyaf.",
+      "permintaanHarapan": "Rekomendasi assesmen dan rujukan gratis.",
+      "catatanPetugasPenerima": "Assesmen tuntas dan rujukan terbit.",
+      "ttdPengadu": "Dedi Kurniawan",
+      "ttdPetugasPenerima": "Aisyah Putri, S.Sos",
+      "dokumenPendukung": [],
+      "status": "Selesai - Ditindaklanjuti",
+      "prioritas": "Penting",
+      "kewenangan": "Dinas Sosial Kota Tanjungbalai",
+      "slaTargetHari": 7,
+      "slaDeadline": "2026-03-17",
+      "auditLogs": [],
+      "arsipDigital": []
+    },
+    {
+      "id": "complaint-009",
+      "nomorPengaduan": "460/00009/PDM/DINSOS/2026",
+      "tanggalPenerimaan": "2026-04-12 14:20",
+      "mediaPengaduan": "Tatap Muka",
+      "petugasPenerima": "Aisyah Putri, S.Sos",
+      "namaPengadu": "Siti Aminah Tambunan",
+      "nik": "1274016604810003",
+      "alamat": "Jl. Masjid Kel. Indra Sakti, Kec. Tanjungbalai Selatan",
+      "nomorTelepon": "081260441122",
+      "email": "siti.aminah@gmail.com",
+      "statusHubungan": "Masyarakat",
+      "pokokPengaduan": "Permohonan Bantuan Usaha Ekonomi Produktif (UEP) Perempuan Kepala Keluarga",
+      "uraianKronologi": "Ibu tunggal dengan 3 tanggungan memohon bantuan etalase dan modal usaha jualan kue.",
+      "permintaanHarapan": "Bantuan stimulus permodalan UEP Dinsos.",
+      "catatanPetugasPenerima": "Bantuan sarana usaha telah diserahkan di kantor Dinsos.",
+      "ttdPengadu": "Siti Aminah Tambunan",
+      "ttdPetugasPenerima": "Aisyah Putri, S.Sos",
+      "dokumenPendukung": [],
+      "status": "Selesai - Ditindaklanjuti",
+      "prioritas": "Biasa",
+      "kewenangan": "Dinas Sosial Kota Tanjungbalai",
+      "slaTargetHari": 14,
+      "slaDeadline": "2026-04-26",
+      "auditLogs": [],
+      "arsipDigital": []
+    },
+    {
+      "id": "complaint-010",
+      "nomorPengaduan": "460/00010/PDM/DINSOS/2026",
+      "tanggalPenerimaan": "2026-05-15 08:45",
+      "mediaPengaduan": "Tatap Muka",
+      "petugasPenerima": "Aisyah Putri, S.Sos",
+      "namaPengadu": "Zulkifli Batubara",
+      "nik": "1274021008700004",
+      "alamat": "Jl. D.I. Panjaitan Kel. Pasar Baru",
+      "nomorTelepon": "085372110033",
+      "email": "zulkifli.bb@yahoo.com",
+      "statusHubungan": "Masyarakat",
+      "pokokPengaduan": "Penanganan ODGJ Terlantar Mengamuk di Pasar Bahagia",
+      "uraianKronologi": "Laporan warga terkait ODGJ terlantar tanpa identitas berkeliaran dan membahayakan pedagang pasar.",
+      "permintaanHarapan": "Evakuasi dan penanganan medis ke RSUD dr. Tengku Mansyur.",
+      "catatanPetugasPenerima": "Tim Reaksi Cepat Dinsos mengevakuasi ODGJ ke RSUD.",
+      "ttdPengadu": "Zulkifli Batubara",
+      "ttdPetugasPenerima": "Aisyah Putri, S.Sos",
+      "dokumenPendukung": [],
+      "status": "Selesai - Ditindaklanjuti",
+      "prioritas": "Mendesak",
+      "kewenangan": "Dinas Sosial Kota Tanjungbalai",
+      "slaTargetHari": 3,
+      "slaDeadline": "2026-05-18",
+      "auditLogs": [],
+      "arsipDigital": []
+    },
+    {
+      "id": "complaint-011",
+      "nomorPengaduan": "460/00011/PDM/DINSOS/2026",
+      "tanggalPenerimaan": "2026-06-20 13:10",
+      "mediaPengaduan": "Website",
+      "petugasPenerima": "Aisyah Putri, S.Sos",
+      "namaPengadu": "Rahmat Hidayat",
+      "nik": "1274052306950001",
+      "alamat": "Jl. Sipori-pori Kel. Kapias Pulau Buaya",
+      "nomorTelepon": "082274889900",
+      "email": "rahmat.hidayat@gmail.com",
+      "statusHubungan": "Keluarga",
+      "pokokPengaduan": "Permohonan Bantuan Alat Bantu Dengar Lansia",
+      "uraianKronologi": "Kakek usia 76 tahun mengalami gangguan pendengaran berat dan membutuhkan alat bantu dengar.",
+      "permintaanHarapan": "Bantuan ABD melalui program alat bantu Dinsos.",
+      "catatanPetugasPenerima": "Alat bantu dengar diserahkan langsung ke rumah pengadu.",
+      "ttdPengadu": "Rahmat Hidayat",
+      "ttdPetugasPenerima": "Aisyah Putri, S.Sos",
+      "dokumenPendukung": [],
+      "status": "Selesai - Ditindaklanjuti",
+      "prioritas": "Biasa",
+      "kewenangan": "Dinas Sosial Kota Tanjungbalai",
+      "slaTargetHari": 14,
+      "slaDeadline": "2026-07-04",
+      "auditLogs": [],
+      "arsipDigital": []
+    },
+    {
+      "id": "complaint-012",
+      "nomorPengaduan": "460/00012/PDM/DINSOS/2026",
+      "tanggalPenerimaan": "2026-07-16 09:15",
+      "mediaPengaduan": "Tatap Muka",
+      "petugasPenerima": "Aisyah Putri, S.Sos",
+      "namaPengadu": "Kartini Siregar",
+      "nik": "1274034509830002",
+      "alamat": "Jl. Al-Washliyah Kel. Beting Kuala Kapias",
+      "nomorTelepon": "081375992211",
+      "email": "kartini.siregar@gmail.com",
+      "statusHubungan": "Masyarakat",
+      "pokokPengaduan": "Pengaduan Rumah Tidak Layak Huni (RTLH) Roboh Diterpa Angin Kencang",
+      "uraianKronologi": "Bagian dapur dan atap seng rumah warga miskin hancur terhempas angin puting beliung.",
+      "permintaanHarapan": "Bantuan material perbaikan atap seng dan kayu darurat.",
+      "catatanPetugasPenerima": "Pemberian bantuan bahan bangunan atap seng darurat telah direalisasikan.",
+      "ttdPengadu": "Kartini Siregar",
+      "ttdPetugasPenerima": "Aisyah Putri, S.Sos",
+      "dokumenPendukung": [],
+      "status": "Selesai - Ditindaklanjuti",
+      "prioritas": "Mendesak",
+      "kewenangan": "Dinas Sosial Kota Tanjungbalai",
+      "slaTargetHari": 3,
+      "slaDeadline": "2026-07-19",
+      "auditLogs": [],
+      "arsipDigital": []
+    },
+    {
+      "id": "complaint-013",
+      "nomorPengaduan": "460/00013/PDM/DINSOS/2026",
+      "tanggalPenerimaan": "2026-08-22 10:40",
+      "mediaPengaduan": "Website",
+      "petugasPenerima": "Aisyah Putri, S.Sos",
+      "namaPengadu": "Budi Santoso",
+      "nik": "1274041708890003",
+      "alamat": "Jl. Jenderal Sudirman Kel. Sijambi, Kec. Datuk Bandar",
+      "nomorTelepon": "085277443322",
+      "email": "budi.santoso@gmail.com",
+      "statusHubungan": "Masyarakat",
+      "pokokPengaduan": "Penyaluran Bantuan Sembako Lansia Tunggal Kurang Mampu",
+      "uraianKronologi": "Warga lansia hidup sebatang kara tanpa penghasilan tetap di gubuk pinggir kebun.",
+      "permintaanHarapan": "Bantuan permakanan rutin dan dimasukkan ke DTKS.",
+      "catatanPetugasPenerima": "Didaftarkan ke DTKS desil 1 dan paket sembako rutin disalurkan.",
+      "ttdPengadu": "Budi Santoso",
+      "ttdPetugasPenerima": "Aisyah Putri, S.Sos",
+      "dokumenPendukung": [],
+      "status": "Selesai - Ditindaklanjuti",
+      "prioritas": "Penting",
+      "kewenangan": "Dinas Sosial Kota Tanjungbalai",
+      "slaTargetHari": 7,
+      "slaDeadline": "2026-08-29",
+      "auditLogs": [],
+      "arsipDigital": []
+    },
+    {
+      "id": "complaint-014",
+      "nomorPengaduan": "460/00014/PDM/DINSOS/2026",
+      "tanggalPenerimaan": "2026-10-02 11:20",
+      "mediaPengaduan": "Website",
+      "petugasPenerima": "Aisyah Putri, S.Sos",
+      "namaPengadu": "Muhammad Ilham",
+      "nik": "1274010803960004",
+      "alamat": "Jl. DI Panjaitan Kel. Sejahtera, Kec. Tanjungbalai Utara",
+      "nomorTelepon": "081264556677",
+      "email": "m.ilham96@gmail.com",
+      "statusHubungan": "Masyarakat",
+      "pokokPengaduan": "Usulan Bantuan Kaki Palsu (Prostesis) Korban Kecelakaan Kerja Nelayan",
+      "uraianKronologi": "Nelayan buruh mengalami amputasi kaki kanan akibat lilitan tali jangkar kapal.",
+      "permintaanHarapan": "Bantuan pembuatan alat bantu kaki tiruan / kaki palsu rehabilitasi sosial.",
+      "catatanPetugasPenerima": "Berkas medis telah diterima dan dijadwalkan pengukuran prostesis.",
+      "ttdPengadu": "Muhammad Ilham",
+      "ttdPetugasPenerima": "Aisyah Putri, S.Sos",
+      "dokumenPendukung": [],
+      "status": "Sedang Diproses",
+      "prioritas": "Penting",
+      "kewenangan": "Dinas Sosial Kota Tanjungbalai",
+      "slaTargetHari": 7,
+      "slaDeadline": "2026-10-09",
+      "auditLogs": [],
+      "arsipDigital": []
+    },
+    {
+      "id": "complaint-015",
+      "nomorPengaduan": "460/00015/PDM/DINSOS/2026",
+      "tanggalPenerimaan": "2026-10-03 14:30",
+      "mediaPengaduan": "Tatap Muka",
+      "petugasPenerima": "Aisyah Putri, S.Sos",
+      "namaPengadu": "Dewi Lestari",
+      "nik": "1274026010940002",
+      "alamat": "Jl. Veteran Kel. Keramat Kubah, Kec. Sei Tualang Raso",
+      "nomorTelepon": "085296332211",
+      "email": "dewi.lestari@gmail.com",
+      "statusHubungan": "Keluarga",
+      "pokokPengaduan": "Penelaahan Pemadanan NIK Anomali Kependudukan pada Bansos PKH",
+      "uraianKronologi": "Nama ibu tidak padan dengan data Disdukcapil sehingga status penerima PKH terblokir di bank Himbara.",
+      "permintaanHarapan": "Surat rekomendasi pemadanan data ke Disdukcapil dan Bank Penyalur.",
+      "catatanPetugasPenerima": "Menunggu proses sinkronisasi database SIKS-NG.",
+      "ttdPengadu": "Dewi Lestari",
+      "ttdPetugasPenerima": "Aisyah Putri, S.Sos",
+      "dokumenPendukung": [],
+      "status": "Dalam Penelaahan",
+      "prioritas": "Biasa",
+      "kewenangan": "Dinas Sosial Kota Tanjungbalai",
+      "slaTargetHari": 14,
+      "slaDeadline": "2026-10-17",
+      "auditLogs": [],
+      "arsipDigital": []
+    }
+  ],
+  "users": [
+    {
+      "id": "user-admin",
+      "nama": "Boy Gulo",
+      "nip": "199212312025211024",
+      "email": "admin.dinsos@tanjungbalaikota.go.id",
+      "role": "ADMIN",
+      "jabatan": "Pengadminstrasi Perkantoran",
+      "username": "boygulo",
+      "password": "admin123"
+    },
+    {
+      "id": "user-penerima",
+      "nama": "Aisyah Putri, S.Sos",
+      "nip": "19880512 201202 2 004",
+      "email": "aisyah.penerima@tanjungbalaikota.go.id",
+      "role": "PETUGAS_PENERIMA",
+      "jabatan": "Petugas Pelayanan & Penerimaan Pengaduan",
+      "username": "penerima",
+      "password": "dinsos123"
+    },
+    {
+      "id": "user-penelaah",
+      "nama": "Drs. Chairul Anwar, M.Si",
+      "nip": "19760315 200501 1 008",
+      "email": "chairul.penelaah@tanjungbalaikota.go.id",
+      "role": "PETUGAS_PENELAAH",
+      "jabatan": "Ketua Tim Penelaahan & Advokasi Sosial",
+      "username": "penelaah",
+      "password": "dinsos123"
+    },
+    {
+      "id": "user-penyelesaian",
+      "nama": "Bambang Setiawan, S.STP",
+      "nip": "19850920 200912 1 002",
+      "email": "bambang.penyelesaian@tanjungbalaikota.go.id",
+      "role": "PETUGAS_PENYELESAIAN",
+      "jabatan": "Kepala Seksi Rehabilitasi & Penyelesaian Kasus",
+      "username": "penyelesaian",
+      "password": "dinsos123"
+    },
+    {
+      "id": "user-pimpinan",
+      "nama": "Zul Abdiman, S.Kom., M.M",
+      "nip": "19741228 200003 1 003",
+      "email": "kadis@tanjungbalaikota.go.id",
+      "role": "PIMPINAN",
+      "jabatan": "Kepala Dinas Sosial Kota Tanjungbalai",
+      "username": "kadis",
+      "password": "dinsos123"
+    }
+  ],
+  "officialInfo": {
+    "instansi": "PEMERINTAH KOTA TANJUNGBALAI",
+    "dinas": "DINAS SOSIAL",
+    "alamat": "JLN. JENDERAL SUDIRMAN KM. 1,5 TELP. (0623) 92086",
+    "telepon": "(0623) 92086",
+    "website": "dinsos.tanjungbalaikota.go.id",
+    "email": "dinsos@tanjungbalaikota.go.id",
+    "kotaKodePos": "TANJUNGBALAI - 21368",
+    "kadis": {
+      "nama": "ZUL ABDIMAN, S.Kom., M.M",
+      "nip": "19741228 200003 1 003",
+      "jabatan": "KEPALA DINAS SOSIAL KOTA TANJUNGBALAI",
+      "pangkat": "Pembina Utama Muda (IV/c)"
+    },
+    "slaDays": {
+      "mendesak": 3,
+      "penting": 7,
+      "biasa": 14
+    }
+  },
+  "notifications": [
+    {
+      "id": "notif-1",
+      "title": "Pengaduan Mendesak Masuk!",
+      "message": "Pengaduan 460/00004/PDM/DINSOS/2026 (Layanan Mobil Jenazah) berstatus Mendesak membutuhkan tindakan segera.",
+      "nomorPengaduan": "460/00004/PDM/DINSOS/2026",
+      "complaintId": "complaint-004",
+      "type": "urgent",
+      "timestamp": "2026-09-29 18:25",
+      "read": true
+    },
+    {
+      "id": "notif-2",
+      "title": "Pengaduan Baru Terdaftar",
+      "message": "Pengaduan 460/00005/PDM/DINSOS/2026 dari Fatimah Az-Zahra masuk melalui website dan menunggu telaah.",
+      "nomorPengaduan": "460/00005/PDM/DINSOS/2026",
+      "complaintId": "complaint-005",
+      "type": "info",
+      "timestamp": "2026-09-30 08:16",
+      "read": true
+    },
+    {
+      "id": "notif-3",
+      "title": "Penyelesaian Berhasil Dikonfirmasi",
+      "message": "Pengaduan 460/00001/PDM/DINSOS/2026 atas nama Hj. Rohana telah selesai dan ditandatangani pengadu.",
+      "nomorPengaduan": "460/00001/PDM/DINSOS/2026",
+      "complaintId": "complaint-001",
+      "type": "success",
+      "timestamp": "2026-09-25 10:15",
+      "read": true
+    }
+  ],
+  "lastUpdated": "2026-10-05T12:34:52.954Z",
+  "updatedBy": "initialization"
+}

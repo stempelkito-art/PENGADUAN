@@ -102,14 +102,26 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
       const stored = localStorage.getItem(STORAGE_KEY_COMPLAINTS);
       if (stored) {
         const parsed: Complaint[] = JSON.parse(stored);
-        const existingIds = new Set(parsed.map(c => c.id));
+        // Seamlessly migrate legacy format PDM/DSKT/2026/XXXXXX to 460/XXXXX/PDM/DINSOS/2026
+        const migrated = parsed.map(c => {
+          if (c.nomorPengaduan && c.nomorPengaduan.startsWith('PDM/DSKT/2026/')) {
+            const seqMatch = c.nomorPengaduan.match(/(\d+)$/);
+            const seq = seqMatch ? parseInt(seqMatch[1], 10) : 1;
+            return {
+              ...c,
+              nomorPengaduan: `460/${String(seq).padStart(5, '0')}/PDM/DINSOS/2026`
+            };
+          }
+          return c;
+        });
+        const existingIds = new Set(migrated.map(c => c.id));
         const missingDefaults = INITIAL_COMPLAINTS.filter(c => !existingIds.has(c.id));
         if (missingDefaults.length > 0) {
-          const merged = [...parsed, ...missingDefaults];
+          const merged = [...migrated, ...missingDefaults];
           localStorage.setItem(STORAGE_KEY_COMPLAINTS, JSON.stringify(merged));
           return merged;
         }
-        return parsed;
+        return migrated;
       }
     } catch (e) {
       console.error('Failed to load complaints from storage', e);
@@ -274,9 +286,36 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
         }
 
         if (Array.isArray(sData.users) && sData.users.length > 0) {
+          const serverUsers: User[] = sData.users;
           setUsers(prev => {
-            const serverUsers: User[] = sData.users;
-            return serverUsers.length !== prev.length ? serverUsers : prev;
+            const isDifferent = serverUsers.length !== prev.length || 
+              serverUsers.some(su => {
+                const pu = prev.find(p => p.id === su.id);
+                return !pu || 
+                  pu.nama !== su.nama || 
+                  pu.username !== su.username || 
+                  pu.nip !== su.nip || 
+                  pu.email !== su.email || 
+                  pu.role !== su.role || 
+                  pu.jabatan !== su.jabatan || 
+                  pu.password !== su.password ||
+                  pu.updatedAt !== su.updatedAt;
+              });
+
+            if (isDifferent) {
+              try {
+                localStorage.setItem(STORAGE_KEY_USERS, JSON.stringify(serverUsers));
+              } catch (e) {}
+
+              // Also update currentUser if they are currently logged in with this modified user!
+              setCurrentUser(curr => {
+                const matched = serverUsers.find(u => u.id === curr.id);
+                return matched ? { ...curr, ...matched } : curr;
+              });
+
+              return serverUsers;
+            }
+            return prev;
           });
         }
       }
@@ -379,20 +418,22 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
 
     initialLoad();
 
-    // Poll server every 12 seconds so updates made from other PCs appear automatically
+    // Poll server every 5 seconds so updates made from other PCs appear quickly
     const pollInterval = setInterval(() => {
       fetchUpdatesFromServer();
-    }, 12000);
+    }, 5000);
 
-    const onFocus = () => {
+    const onFocusOrVisible = () => {
       fetchUpdatesFromServer();
     };
-    window.addEventListener('focus', onFocus);
+    window.addEventListener('focus', onFocusOrVisible);
+    document.addEventListener('visibilitychange', onFocusOrVisible);
 
     return () => {
       isMounted = false;
       clearInterval(pollInterval);
-      window.removeEventListener('focus', onFocus);
+      window.removeEventListener('focus', onFocusOrVisible);
+      document.removeEventListener('visibilitychange', onFocusOrVisible);
     };
   }, [fetchUpdatesFromServer]);
 
@@ -443,24 +484,94 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
     setCurrentUser(target);
   };
 
-  const addUser = (userData: Omit<User, 'id'>) => {
+  const addUser = async (userData: Omit<User, 'id'>) => {
     const defaultUsername = userData.username || userData.email.split('@')[0] || userData.nama.toLowerCase().replace(/[^a-z0-9]/g, '') || 'petugas';
+    const nowIso = new Date().toISOString();
     const newUser: User = {
       ...userData,
       id: `user-${Date.now()}`,
       username: defaultUsername,
-      password: userData.password || 'dinsos123'
+      password: userData.password || 'dinsos123',
+      updatedAt: nowIso
     };
-    setUsers(prev => [...prev, newUser]);
+    const updatedUsers = [...users, newUser];
+    setUsers(updatedUsers);
+    try {
+      localStorage.setItem(STORAGE_KEY_USERS, JSON.stringify(updatedUsers));
+      const res = await fetch('/api/database/sync', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          complaints,
+          users: updatedUsers,
+          officialInfo,
+          notifications,
+          updatedBy: 'admin-add-user'
+        })
+      });
+      if (res.ok) {
+        setIsServerConnected(true);
+        setSyncStatus('synced');
+        setLastSyncTime(new Date().toLocaleTimeString('id-ID'));
+      }
+    } catch (e) {
+      console.warn('Sync failed on addUser', e);
+    }
   };
 
-  const updateUser = (id: string, updates: Partial<User>) => {
-    setUsers(prev => prev.map(u => (u.id === id ? { ...u, ...updates } : u)));
-    setCurrentUser(prev => (prev.id === id ? { ...prev, ...updates } : prev));
+  const updateUser = async (id: string, updates: Partial<User>) => {
+    const nowIso = new Date().toISOString();
+    const updatedUsers = users.map(u => (u.id === id ? { ...u, ...updates, updatedAt: nowIso } : u));
+    setUsers(updatedUsers);
+    setCurrentUser(prev => (prev.id === id ? { ...prev, ...updates, updatedAt: nowIso } : prev));
+    try {
+      localStorage.setItem(STORAGE_KEY_USERS, JSON.stringify(updatedUsers));
+      // Immediate push to server so all other PCs receive it
+      const res = await fetch('/api/database/sync', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          complaints,
+          users: updatedUsers,
+          officialInfo,
+          notifications,
+          updatedBy: `admin-edit-user-${id}`
+        })
+      });
+      if (res.ok) {
+        setIsServerConnected(true);
+        setSyncStatus('synced');
+        setLastSyncTime(new Date().toLocaleTimeString('id-ID'));
+      }
+    } catch (e) {
+      console.warn('Sync failed on updateUser', e);
+    }
   };
 
-  const deleteUser = (id: string) => {
-    setUsers(prev => prev.filter(u => u.id !== id));
+  const deleteUser = async (id: string) => {
+    const updatedUsers = users.filter(u => u.id !== id);
+    setUsers(updatedUsers);
+    try {
+      localStorage.setItem(STORAGE_KEY_USERS, JSON.stringify(updatedUsers));
+      const res = await fetch('/api/database/sync', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          complaints,
+          users: updatedUsers,
+          officialInfo,
+          notifications,
+          updatedBy: `admin-delete-user-${id}`
+        })
+      });
+      if (res.ok) {
+        setIsServerConnected(true);
+        setSyncStatus('synced');
+        setLastSyncTime(new Date().toLocaleTimeString('id-ID'));
+      }
+    } catch (e) {
+      console.warn('Sync failed on deleteUser', e);
+    }
   };
 
   // Helper to format Date
@@ -482,12 +593,42 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
     return `${yyyy}-${mm}-${dd}`;
   };
 
-  // Generate Unique Complaint Number: PDM/DSKT/2026/00000X
+  // Generate Unique Complaint Number: 460/XXXXX/PDM/DINSOS/TAHUN
+  // Automatically restarts sequence from 00001 when year changes
   const generateComplaintNumber = (): string => {
-    const year = new Date().getFullYear();
-    const count = complaints.length + 1;
-    const padded = String(count).padStart(6, '0');
-    return `PDM/DSKT/${year}/${padded}`;
+    const currentYear = new Date().getFullYear();
+    const currentYearStr = String(currentYear);
+
+    let maxSeq = 0;
+    complaints.forEach(c => {
+      if (!c.nomorPengaduan) return;
+
+      // Check if complaint belongs to current year
+      const isCurrentYear = 
+        c.nomorPengaduan.endsWith(`/${currentYearStr}`) ||
+        c.nomorPengaduan.includes(`/${currentYearStr}/`) ||
+        (c.tanggalPenerimaan && c.tanggalPenerimaan.startsWith(currentYearStr));
+
+      if (isCurrentYear) {
+        // Pattern 1: 460/00001/PDM/DINSOS/2026
+        const matchNew = c.nomorPengaduan.match(/^460\/(\d+)\/PDM\/DINSOS\/\d{4}$/);
+        if (matchNew) {
+          const num = parseInt(matchNew[1], 10);
+          if (!isNaN(num) && num > maxSeq) maxSeq = num;
+        } else {
+          // Pattern 2: PDM/DSKT/2026/000001 (legacy support)
+          const matchOld = c.nomorPengaduan.match(/\/(\d{4})\/(\d+)$/);
+          if (matchOld && matchOld[1] === currentYearStr) {
+            const num = parseInt(matchOld[2], 10);
+            if (!isNaN(num) && num > maxSeq) maxSeq = num;
+          }
+        }
+      }
+    });
+
+    const nextSeq = maxSeq + 1;
+    const padded = String(nextSeq).padStart(5, '0');
+    return `460/${padded}/PDM/DINSOS/${currentYearStr}`;
   };
 
   // Create Complaint

@@ -75,6 +75,7 @@ export interface User {
   role: UserRole;
   jabatan: string;
   avatar?: string;
+  updatedAt?: string;
 }
 
 export interface DokumenPendukungItem {

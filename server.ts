@@ -126,13 +126,31 @@ app.post('/api/database/sync', (req, res) => {
     });
 
     // Smart merge users
-    const mergedUsersMap = new Map();
-    (serverDb.users || []).forEach((u: any) => {
-      if (u && u.id) mergedUsersMap.set(u.id, u);
-    });
-    (clientData.users || []).forEach((u: any) => {
-      if (u && u.id) mergedUsersMap.set(u.id, u);
-    });
+    let finalUsers = serverDb.users || [];
+    if (Array.isArray(clientData.users) && clientData.users.length > 0) {
+      if (clientData.updatedBy && clientData.updatedBy.startsWith('admin-')) {
+        // Explicit admin user management action: direct source of truth
+        finalUsers = clientData.users;
+      } else {
+        const userMap = new Map();
+        (serverDb.users || []).forEach((u: any) => { if (u && u.id) userMap.set(u.id, u); });
+        (clientData.users || []).forEach((u: any) => {
+          if (!u || !u.id) return;
+          const existing = userMap.get(u.id);
+          if (!existing) {
+            userMap.set(u.id, u);
+          } else {
+            // Keep the one with newer updatedAt or updated fields
+            const clientTime = u.updatedAt ? new Date(u.updatedAt).getTime() : 0;
+            const serverTime = existing.updatedAt ? new Date(existing.updatedAt).getTime() : 0;
+            if (clientTime >= serverTime) {
+              userMap.set(u.id, { ...existing, ...u });
+            }
+          }
+        });
+        finalUsers = Array.from(userMap.values());
+      }
+    }
 
     // Smart merge notifications
     const mergedNotifMap = new Map();
@@ -145,7 +163,7 @@ app.post('/api/database/sync', (req, res) => {
 
     const mergedPayload = {
       complaints: Array.from(mergedComplaintsMap.values()),
-      users: Array.from(mergedUsersMap.values()),
+      users: finalUsers,
       officialInfo: clientData.officialInfo || serverDb.officialInfo,
       notifications: Array.from(mergedNotifMap.values()),
       lastUpdated: new Date().toISOString(),

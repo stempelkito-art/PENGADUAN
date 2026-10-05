@@ -119,7 +119,7 @@ export const HomeSection: React.FC = () => {
                     setQuickTrackingNumber(e.target.value);
                     setTrackingError('');
                   }}
-                  placeholder="Ketik Nomor Pengaduan (contoh: PDM/DSKT/2026/000001) atau NIK..."
+                  placeholder="Ketik Nomor Pengaduan (contoh: 460/00001/PDM/DINSOS/2026) atau NIK..."
                   className="w-full pl-10 pr-4 py-2.5 bg-white text-slate-900 placeholder:text-slate-400 text-xs sm:text-sm rounded-xl focus:outline-hidden focus:ring-2 focus:ring-amber-400"
                 />
               </div>
@@ -219,7 +219,7 @@ export const HomeSection: React.FC = () => {
             </div>
             <div className="space-y-3 relative before:absolute before:left-3.5 before:top-2 before:bottom-2 before:w-0.5 before:bg-blue-200">
               {[
-                { title: 'Pengaduan Masuk & Penerimaan', desc: 'Sistem menerbitkan Nomor Pengaduan unik otomatis (PDM/DSKT/2026/XXXXXX).' },
+                { title: 'Pengaduan Masuk & Penerimaan', desc: 'Sistem menerbitkan Nomor Pengaduan unik otomatis (460/XXXXX/PDM/DINSOS/2026).' },
                 { title: 'Verifikasi Identitas & Kelengkapan', desc: 'Pengecekan NIK pengadu, alamat domisili, dan dokumen pendukung.' },
                 { title: 'Penelaahan & Pengklasifikasian', desc: 'Tim Penelaah menelaah materi aduan, mencocokkan dengan 10 klasifikasi resmi.' },
                 { title: 'Ditindaklanjuti oleh Unit/Petugas', desc: 'Verifikasi lapangan, asesmen pekerja sosial, sinkronisasi data SIKS-NG/bantuan.' },

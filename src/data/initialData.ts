@@ -129,7 +129,7 @@ export const STATUS_OPTIONS = [
 export const INITIAL_COMPLAINTS: Complaint[] = [
   {
     id: 'complaint-001',
-    nomorPengaduan: 'PDM/DSKT/2026/000001',
+    nomorPengaduan: '460/00001/PDM/DINSOS/2026',
     tanggalPenerimaan: '2026-09-20 09:30',
     mediaPengaduan: 'Website',
     petugasPenerima: 'Aisyah Putri, S.Sos',
@@ -211,7 +211,7 @@ export const INITIAL_COMPLAINTS: Complaint[] = [
     slaTargetHari: 7,
     slaDeadline: '2026-09-27',
     auditLogs: [
-      { id: 'log-1', timestamp: '2026-09-20 09:30', user: 'Aisyah Putri, S.Sos', role: 'PETUGAS_PENERIMA', action: 'Penerimaan Pengaduan', detail: 'Pengaduan masuk melalui Website, Nomor PDM/DSKT/2026/000001 dibuat otomatis.' },
+      { id: 'log-1', timestamp: '2026-09-20 09:30', user: 'Aisyah Putri, S.Sos', role: 'PETUGAS_PENERIMA', action: 'Penerimaan Pengaduan', detail: 'Pengaduan masuk melalui Website, Nomor 460/00001/PDM/DINSOS/2026 dibuat otomatis.' },
       { id: 'log-2', timestamp: '2026-09-20 14:00', user: 'Aisyah Putri, S.Sos', role: 'PETUGAS_PENERIMA', action: 'Verifikasi Berkas', detail: 'Kelengkapan berkas KTP, KK, dan buku tabungan KKS diverifikasi lengkap.' },
       { id: 'log-3', timestamp: '2026-09-21 11:15', user: 'Drs. Chairul Anwar, M.Si', role: 'PETUGAS_PENELAAH', action: 'Penelaahan & Klasifikasi', detail: 'Klasifikasi: PKH & Bantuan Sosial, Prioritas: Penting, Kewenangan: Dinsos Tanjungbalai.' },
       { id: 'log-4', timestamp: '2026-09-22 09:00', user: 'Bambang Setiawan, S.STP', role: 'PETUGAS_PENYELESAIAN', action: 'Tindak Lanjut Lapangan', detail: 'Kunjungan verifikasi dan sinkronisasi SIKS-NG dengan Bank Penyalur.' },
@@ -229,7 +229,7 @@ export const INITIAL_COMPLAINTS: Complaint[] = [
   },
   {
     id: 'complaint-002',
-    nomorPengaduan: 'PDM/DSKT/2026/000002',
+    nomorPengaduan: '460/00002/PDM/DINSOS/2026',
     tanggalPenerimaan: '2026-09-25 13:45',
     mediaPengaduan: 'Tatap Muka',
     petugasPenerima: 'Aisyah Putri, S.Sos',
@@ -300,7 +300,7 @@ export const INITIAL_COMPLAINTS: Complaint[] = [
   },
   {
     id: 'complaint-003',
-    nomorPengaduan: 'PDM/DSKT/2026/000003',
+    nomorPengaduan: '460/00003/PDM/DINSOS/2026',
     tanggalPenerimaan: '2026-09-22 08:30',
     mediaPengaduan: 'WhatsApp',
     petugasPenerima: 'Aisyah Putri, S.Sos',
@@ -387,7 +387,7 @@ export const INITIAL_COMPLAINTS: Complaint[] = [
   },
   {
     id: 'complaint-004',
-    nomorPengaduan: 'PDM/DSKT/2026/000004',
+    nomorPengaduan: '460/00004/PDM/DINSOS/2026',
     tanggalPenerimaan: '2026-09-29 18:20',
     mediaPengaduan: 'Telepon',
     petugasPenerima: 'Aisyah Putri, S.Sos',
@@ -456,7 +456,7 @@ export const INITIAL_COMPLAINTS: Complaint[] = [
   },
   {
     id: 'complaint-005',
-    nomorPengaduan: 'PDM/DSKT/2026/000005',
+    nomorPengaduan: '460/00005/PDM/DINSOS/2026',
     tanggalPenerimaan: '2026-09-30 08:15',
     mediaPengaduan: 'Website',
     petugasPenerima: 'Aisyah Putri, S.Sos',
@@ -486,7 +486,7 @@ export const INITIAL_COMPLAINTS: Complaint[] = [
     slaTargetHari: 14,
     slaDeadline: '2026-10-14',
     auditLogs: [
-      { id: 'log-501', timestamp: '2026-09-30 08:15', user: 'Fatimah Az-Zahra (Masyarakat)', role: 'MASYARAKAT', action: 'Input Pengaduan Baru', detail: 'Pengaduan publik berhasil disubmit dengan nomor PDM/DSKT/2026/000005.' }
+      { id: 'log-501', timestamp: '2026-09-30 08:15', user: 'Fatimah Az-Zahra (Masyarakat)', role: 'MASYARAKAT', action: 'Input Pengaduan Baru', detail: 'Pengaduan publik berhasil disubmit dengan nomor 460/00005/PDM/DINSOS/2026.' }
     ],
     arsipDigital: [
       { id: 'ars-501', kategori: 'Identitas', namaFile: 'ktp_fatimah.pdf', tanggal: '2026-09-30', ukuran: '920 KB', diunggahOleh: 'Aisyah Putri, S.Sos' },
@@ -495,7 +495,7 @@ export const INITIAL_COMPLAINTS: Complaint[] = [
   },
   {
     id: 'complaint-006',
-    nomorPengaduan: 'PDM/DSKT/2026/000006',
+    nomorPengaduan: '460/00006/PDM/DINSOS/2026',
     tanggalPenerimaan: '2026-01-14 10:15',
     mediaPengaduan: 'Tatap Muka',
     petugasPenerima: 'Aisyah Putri, S.Sos',
@@ -522,7 +522,7 @@ export const INITIAL_COMPLAINTS: Complaint[] = [
   },
   {
     id: 'complaint-007',
-    nomorPengaduan: 'PDM/DSKT/2026/000007',
+    nomorPengaduan: '460/00007/PDM/DINSOS/2026',
     tanggalPenerimaan: '2026-02-18 09:30',
     mediaPengaduan: 'Surat',
     petugasPenerima: 'Aisyah Putri, S.Sos',
@@ -549,7 +549,7 @@ export const INITIAL_COMPLAINTS: Complaint[] = [
   },
   {
     id: 'complaint-008',
-    nomorPengaduan: 'PDM/DSKT/2026/000008',
+    nomorPengaduan: '460/00008/PDM/DINSOS/2026',
     tanggalPenerimaan: '2026-03-10 11:00',
     mediaPengaduan: 'Website',
     petugasPenerima: 'Aisyah Putri, S.Sos',
@@ -576,7 +576,7 @@ export const INITIAL_COMPLAINTS: Complaint[] = [
   },
   {
     id: 'complaint-009',
-    nomorPengaduan: 'PDM/DSKT/2026/000009',
+    nomorPengaduan: '460/00009/PDM/DINSOS/2026',
     tanggalPenerimaan: '2026-04-12 14:20',
     mediaPengaduan: 'Tatap Muka',
     petugasPenerima: 'Aisyah Putri, S.Sos',
@@ -603,7 +603,7 @@ export const INITIAL_COMPLAINTS: Complaint[] = [
   },
   {
     id: 'complaint-010',
-    nomorPengaduan: 'PDM/DSKT/2026/000010',
+    nomorPengaduan: '460/00010/PDM/DINSOS/2026',
     tanggalPenerimaan: '2026-05-15 08:45',
     mediaPengaduan: 'Tatap Muka',
     petugasPenerima: 'Aisyah Putri, S.Sos',
@@ -630,7 +630,7 @@ export const INITIAL_COMPLAINTS: Complaint[] = [
   },
   {
     id: 'complaint-011',
-    nomorPengaduan: 'PDM/DSKT/2026/000011',
+    nomorPengaduan: '460/00011/PDM/DINSOS/2026',
     tanggalPenerimaan: '2026-06-20 13:10',
     mediaPengaduan: 'Website',
     petugasPenerima: 'Aisyah Putri, S.Sos',
@@ -657,7 +657,7 @@ export const INITIAL_COMPLAINTS: Complaint[] = [
   },
   {
     id: 'complaint-012',
-    nomorPengaduan: 'PDM/DSKT/2026/000012',
+    nomorPengaduan: '460/00012/PDM/DINSOS/2026',
     tanggalPenerimaan: '2026-07-16 09:15',
     mediaPengaduan: 'Tatap Muka',
     petugasPenerima: 'Aisyah Putri, S.Sos',
@@ -684,7 +684,7 @@ export const INITIAL_COMPLAINTS: Complaint[] = [
   },
   {
     id: 'complaint-013',
-    nomorPengaduan: 'PDM/DSKT/2026/000013',
+    nomorPengaduan: '460/00013/PDM/DINSOS/2026',
     tanggalPenerimaan: '2026-08-22 10:40',
     mediaPengaduan: 'Website',
     petugasPenerima: 'Aisyah Putri, S.Sos',
@@ -711,7 +711,7 @@ export const INITIAL_COMPLAINTS: Complaint[] = [
   },
   {
     id: 'complaint-014',
-    nomorPengaduan: 'PDM/DSKT/2026/000014',
+    nomorPengaduan: '460/00014/PDM/DINSOS/2026',
     tanggalPenerimaan: '2026-10-02 11:20',
     mediaPengaduan: 'Website',
     petugasPenerima: 'Aisyah Putri, S.Sos',
@@ -738,7 +738,7 @@ export const INITIAL_COMPLAINTS: Complaint[] = [
   },
   {
     id: 'complaint-015',
-    nomorPengaduan: 'PDM/DSKT/2026/000015',
+    nomorPengaduan: '460/00015/PDM/DINSOS/2026',
     tanggalPenerimaan: '2026-10-03 14:30',
     mediaPengaduan: 'Tatap Muka',
     petugasPenerima: 'Aisyah Putri, S.Sos',
@@ -769,8 +769,8 @@ export const INITIAL_NOTIFICATIONS: AppNotification[] = [
   {
     id: 'notif-1',
     title: 'Pengaduan Mendesak Masuk!',
-    message: 'Pengaduan PDM/DSKT/2026/000004 (Layanan Mobil Jenazah) berstatus Mendesak membutuhkan tindakan segera.',
-    nomorPengaduan: 'PDM/DSKT/2026/000004',
+    message: 'Pengaduan 460/00004/PDM/DINSOS/2026 (Layanan Mobil Jenazah) berstatus Mendesak membutuhkan tindakan segera.',
+    nomorPengaduan: '460/00004/PDM/DINSOS/2026',
     complaintId: 'complaint-004',
     type: 'urgent',
     timestamp: '2026-09-29 18:25',
@@ -779,8 +779,8 @@ export const INITIAL_NOTIFICATIONS: AppNotification[] = [
   {
     id: 'notif-2',
     title: 'Pengaduan Baru Terdaftar',
-    message: 'Pengaduan PDM/DSKT/2026/000005 dari Fatimah Az-Zahra masuk melalui website dan menunggu telaah.',
-    nomorPengaduan: 'PDM/DSKT/2026/000005',
+    message: 'Pengaduan 460/00005/PDM/DINSOS/2026 dari Fatimah Az-Zahra masuk melalui website dan menunggu telaah.',
+    nomorPengaduan: '460/00005/PDM/DINSOS/2026',
     complaintId: 'complaint-005',
     type: 'info',
     timestamp: '2026-09-30 08:16',
@@ -789,8 +789,8 @@ export const INITIAL_NOTIFICATIONS: AppNotification[] = [
   {
     id: 'notif-3',
     title: 'Penyelesaian Berhasil Dikonfirmasi',
-    message: 'Pengaduan PDM/DSKT/2026/000001 atas nama Hj. Rohana telah selesai dan ditandatangani pengadu.',
-    nomorPengaduan: 'PDM/DSKT/2026/000001',
+    message: 'Pengaduan 460/00001/PDM/DINSOS/2026 atas nama Hj. Rohana telah selesai dan ditandatangani pengadu.',
+    nomorPengaduan: '460/00001/PDM/DINSOS/2026',
     complaintId: 'complaint-001',
     type: 'success',
     timestamp: '2026-09-25 10:15',
