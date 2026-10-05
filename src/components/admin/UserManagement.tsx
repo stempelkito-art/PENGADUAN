@@ -15,7 +15,13 @@ import {
   EyeOff,
   UserCheck,
   Sparkles,
-  Info
+  Info,
+  Download,
+  Upload,
+  Copy,
+  Share2,
+  CheckCircle2,
+  AlertCircle
 } from 'lucide-react';
 
 export const UserManagement: React.FC = () => {
@@ -45,6 +51,80 @@ export const UserManagement: React.FC = () => {
   const [role, setRole] = useState<UserRole>('PETUGAS_PENERIMA');
   const [jabatan, setJabatan] = useState('Petugas Front Office / Penerima Pengaduan');
   const [successToast, setSuccessToast] = useState('');
+
+  // Export / Import Synchronization Modals
+  const [exportModalOpen, setExportModalOpen] = useState(false);
+  const [importModalOpen, setImportModalOpen] = useState(false);
+  const [copied, setCopied] = useState(false);
+  const [importCode, setImportCode] = useState('');
+  const [importError, setImportError] = useState('');
+
+  const handleCopyExportCode = () => {
+    const payload = JSON.stringify(users, null, 2);
+    navigator.clipboard.writeText(payload);
+    setCopied(true);
+    setTimeout(() => setCopied(false), 3000);
+  };
+
+  const handleDownloadExportFile = () => {
+    const payload = JSON.stringify(users, null, 2);
+    const blob = new Blob([payload], { type: 'application/json' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `sipmas-users-${new Date().toISOString().split('T')[0]}.json`;
+    a.click();
+    URL.revokeObjectURL(url);
+  };
+
+  const handleApplyImport = async () => {
+    try {
+      setImportError('');
+      if (!importCode.trim()) {
+        setImportError('Mohon tempelkan kode teks akun atau pilih berkas JSON terlebih dahulu.');
+        return;
+      }
+      const parsed = JSON.parse(importCode.trim());
+      if (!Array.isArray(parsed) || parsed.length === 0) {
+        setImportError('Format data tidak valid. Data harus berupa daftar akun petugas.');
+        return;
+      }
+      const validUsers: User[] = parsed.filter(u => u && u.id && u.nama && u.role);
+      if (validUsers.length === 0) {
+        setImportError('Tidak ditemukan akun yang valid dalam data yang ditempel.');
+        return;
+      }
+
+      for (const u of validUsers) {
+        const existing = users.find(x => x.id === u.id);
+        if (existing) {
+          await updateUser(u.id, u);
+        } else {
+          await addUser(u);
+        }
+      }
+
+      setImportModalOpen(false);
+      setImportCode('');
+      setSuccessToast(`Berhasil menyelaraskan ${validUsers.length} akun petugas dari PC lain!`);
+      setTimeout(() => setSuccessToast(''), 4000);
+    } catch (err: any) {
+      setImportError('Gagal membaca kode akun: ' + (err.message || 'Format JSON salah'));
+    }
+  };
+
+  const handleFileUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+    const reader = new FileReader();
+    reader.onload = (event) => {
+      const content = event.target?.result as string;
+      if (content) {
+        setImportCode(content);
+      }
+    };
+    reader.readAsText(file);
+  };
 
   // Default suggested positions per role
   const defaultJabatans: Record<UserRole, string> = {
@@ -168,7 +248,29 @@ export const UserManagement: React.FC = () => {
           </p>
         </div>
 
-        <div className="flex items-center gap-2.5">
+        <div className="flex flex-wrap items-center gap-2">
+          <button
+            onClick={() => setExportModalOpen(true)}
+            className="px-3 py-2 bg-white hover:bg-slate-50 border border-slate-300 text-slate-700 text-xs font-bold rounded-xl flex items-center gap-1.5 transition-colors cursor-pointer shadow-xs"
+            title="Salin atau unduh data akun untuk diselaraskan ke PC lain"
+          >
+            <Upload className="w-3.5 h-3.5 text-blue-600" />
+            <span>Bagikan Akun ke PC Lain</span>
+          </button>
+
+          <button
+            onClick={() => {
+              setImportModalOpen(true);
+              setImportCode('');
+              setImportError('');
+            }}
+            className="px-3 py-2 bg-blue-50 hover:bg-blue-100 border border-blue-200 text-blue-800 text-xs font-bold rounded-xl flex items-center gap-1.5 transition-colors cursor-pointer shadow-xs"
+            title="Terapkan data akun yang disalin dari PC lain"
+          >
+            <Download className="w-3.5 h-3.5 text-blue-600" />
+            <span>Terapkan di PC Ini</span>
+          </button>
+
           <button
             onClick={() => triggerManualSync()}
             disabled={syncStatus === 'syncing'}
@@ -176,15 +278,15 @@ export const UserManagement: React.FC = () => {
             title={`Status server: ${isServerConnected ? 'Online (Terhubung)' : 'Offline'}. Terakhir sinkron: ${lastSyncTime || 'Baru saja'}`}
           >
             <span className={`w-2 h-2 rounded-full ${isServerConnected ? 'bg-emerald-500 animate-pulse' : 'bg-rose-500'}`} />
-            <span>{syncStatus === 'syncing' ? 'Menyinkronkan...' : 'Sinkron ke PC Lain'}</span>
+            <span>{syncStatus === 'syncing' ? 'Menyinkronkan...' : 'Sinkron Otomatis'}</span>
           </button>
 
           <button
             onClick={openAddModal}
-            className="px-4 py-2.5 bg-red-700 hover:bg-red-800 text-white font-bold text-xs rounded-xl shadow-md flex items-center gap-1.5 transition-all cursor-pointer"
+            className="px-4 py-2 bg-red-700 hover:bg-red-800 text-white font-bold text-xs rounded-xl shadow-md flex items-center gap-1.5 transition-all cursor-pointer whitespace-nowrap"
           >
             <UserPlus className="w-4 h-4" />
-            <span>+ Tambah Petugas Baru</span>
+            <span>+ Tambah Petugas</span>
           </button>
         </div>
       </div>
@@ -538,6 +640,161 @@ export const UserManagement: React.FC = () => {
                 </button>
               </div>
             </form>
+          </div>
+        </div>
+      )}
+
+      {/* Modal 1: Bagikan Akun ke PC Lain */}
+      {exportModalOpen && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-xs animate-in fade-in">
+          <div className="bg-white rounded-2xl shadow-2xl max-w-lg w-full overflow-hidden border border-slate-200">
+            <div className="p-5 bg-gradient-to-r from-slate-900 to-blue-900 text-white flex items-center justify-between">
+              <div className="flex items-center gap-2.5">
+                <Upload className="w-5 h-5 text-blue-400" />
+                <h3 className="font-bold text-base">Bagikan / Salin Data Akun ke PC Lain</h3>
+              </div>
+              <button 
+                onClick={() => setExportModalOpen(false)}
+                className="text-slate-400 hover:text-white font-bold p-1 rounded-lg"
+              >
+                ✕
+              </button>
+            </div>
+
+            <div className="p-6 space-y-4 text-xs">
+              <div className="p-3 bg-blue-50 border border-blue-200 rounded-xl text-blue-900 leading-relaxed">
+                <p className="font-bold mb-1 flex items-center gap-1.5 text-blue-800">
+                  <CheckCircle2 className="w-4 h-4 text-blue-600" />
+                  Total {users.length} Akun Petugas Siap Diselaraskan
+                </p>
+                Gunakan fitur ini agar komputer lain langsung memiliki seluruh akun petugas persis seperti di komputer ini tanpa perlu mengetik ulang satu per satu.
+              </div>
+
+              <div>
+                <label className="block font-bold text-slate-800 mb-1.5">
+                  Langkah-Langkah Singkat:
+                </label>
+                <ol className="list-decimal pl-4 space-y-1 text-slate-600">
+                  <li>Klik tombol <b>"Salin Kode Akun"</b> di bawah ini atau <b>"Unduh Berkas JSON"</b>.</li>
+                  <li>Buka aplikasi di <b>PC Komputer 2</b>.</li>
+                  <li>Di PC 2, klik tombol <b>"Terapkan di PC Ini"</b> lalu tempel kodenya. Selesai!</li>
+                </ol>
+              </div>
+
+              <div className="pt-2 flex flex-col sm:flex-row gap-2.5">
+                <button
+                  type="button"
+                  onClick={handleCopyExportCode}
+                  className={`flex-1 py-3 px-4 rounded-xl font-bold flex items-center justify-center gap-2 transition-all cursor-pointer shadow-sm ${
+                    copied 
+                      ? 'bg-emerald-600 text-white' 
+                      : 'bg-blue-600 hover:bg-blue-700 text-white'
+                  }`}
+                >
+                  <Copy className="w-4 h-4" />
+                  <span>{copied ? '✓ Berhasil Disalin!' : 'Salin Kode Teks Akun'}</span>
+                </button>
+
+                <button
+                  type="button"
+                  onClick={handleDownloadExportFile}
+                  className="py-3 px-4 bg-slate-100 hover:bg-slate-200 border border-slate-300 text-slate-700 rounded-xl font-bold flex items-center justify-center gap-2 transition-colors cursor-pointer"
+                >
+                  <Download className="w-4 h-4 text-slate-600" />
+                  <span>Unduh Berkas (.json)</span>
+                </button>
+              </div>
+            </div>
+
+            <div className="p-4 bg-slate-50 border-t flex justify-end">
+              <button
+                type="button"
+                onClick={() => setExportModalOpen(false)}
+                className="px-5 py-2 bg-slate-200 hover:bg-slate-300 text-slate-700 font-bold text-xs rounded-xl"
+              >
+                Tutup
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Modal 2: Terapkan Akun di PC Ini */}
+      {importModalOpen && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-xs animate-in fade-in">
+          <div className="bg-white rounded-2xl shadow-2xl max-w-lg w-full overflow-hidden border border-slate-200">
+            <div className="p-5 bg-gradient-to-r from-blue-900 to-slate-900 text-white flex items-center justify-between">
+              <div className="flex items-center gap-2.5">
+                <Download className="w-5 h-5 text-emerald-400" />
+                <h3 className="font-bold text-base">Terapkan Akun dari PC Lain</h3>
+              </div>
+              <button 
+                onClick={() => setImportModalOpen(false)}
+                className="text-slate-400 hover:text-white font-bold p-1 rounded-lg"
+              >
+                ✕
+              </button>
+            </div>
+
+            <div className="p-6 space-y-4 text-xs">
+              <div className="p-3 bg-amber-50 border border-amber-200 rounded-xl text-amber-900 leading-relaxed">
+                Tempelkan kode akun yang disalin dari PC pertama, atau pilih berkas <code>.json</code> yang diunduh. Akun di komputer ini akan diselaraskan seketika.
+              </div>
+
+              {importError && (
+                <div className="p-3 bg-rose-50 border border-rose-300 rounded-xl text-rose-800 flex items-center gap-2 font-semibold">
+                  <AlertCircle className="w-4 h-4 text-rose-600 shrink-0" />
+                  <span>{importError}</span>
+                </div>
+              )}
+
+              <div>
+                <label className="block font-bold text-slate-800 mb-1.5">
+                  Tempel Kode Teks Akun di Sini:
+                </label>
+                <textarea
+                  rows={4}
+                  value={importCode}
+                  onChange={(e) => setImportCode(e.target.value)}
+                  placeholder="Tempelkan (Paste / Ctrl+V) data akun di sini..."
+                  className="w-full p-3 bg-slate-50 border border-slate-300 rounded-xl font-mono text-[11px] text-slate-800 focus:bg-white focus:outline-hidden focus:ring-2 focus:ring-blue-600"
+                />
+              </div>
+
+              <div className="flex items-center gap-2">
+                <div className="h-px bg-slate-200 flex-1" />
+                <span className="text-[11px] text-slate-400 uppercase font-bold">atau unggah file</span>
+                <div className="h-px bg-slate-200 flex-1" />
+              </div>
+
+              <div>
+                <input
+                  type="file"
+                  accept=".json,application/json"
+                  onChange={handleFileUpload}
+                  className="block w-full text-xs text-slate-500 file:mr-3 file:py-2 file:px-4 file:rounded-xl file:border-0 file:text-xs file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100 cursor-pointer"
+                />
+              </div>
+
+              <div className="pt-2 flex justify-end gap-2.5">
+                <button
+                  type="button"
+                  onClick={() => setImportModalOpen(false)}
+                  className="px-4 py-2.5 text-slate-600 hover:bg-slate-100 font-bold rounded-xl"
+                >
+                  Batal
+                </button>
+
+                <button
+                  type="button"
+                  onClick={handleApplyImport}
+                  className="px-6 py-2.5 bg-blue-700 hover:bg-blue-800 text-white font-bold rounded-xl shadow-md flex items-center gap-1.5 transition-all cursor-pointer"
+                >
+                  <Check className="w-4 h-4" />
+                  <span>Terapkan Sekarang</span>
+                </button>
+              </div>
+            </div>
           </div>
         </div>
       )}

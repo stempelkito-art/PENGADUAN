@@ -29,7 +29,9 @@ import {
   LogOut,
   FolderSync,
   Sparkles,
-  Database
+  Database,
+  Copy,
+  Check
 } from 'lucide-react';
 import { User } from 'firebase/auth';
 
@@ -52,6 +54,7 @@ export const GoogleWorkspaceSyncModal: React.FC<GoogleWorkspaceSyncModalProps> =
   const [loading, setLoading] = useState(false);
   const [syncStatusMessage, setSyncStatusMessage] = useState<string | null>(null);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
+  const [domainCopied, setDomainCopied] = useState(false);
 
   // Sheets state
   const [spreadsheetInfo, setSpreadsheetInfo] = useState<SpreadsheetInfo | null>(null);
@@ -112,7 +115,11 @@ export const GoogleWorkspaceSyncModal: React.FC<GoogleWorkspaceSyncModalProps> =
       }
     } catch (err: any) {
       console.error(err);
-      setErrorMessage(err.message || 'Gagal login ke akun Google.');
+      if (err.code === 'auth/unauthorized-domain' || err.message?.includes('unauthorized-domain')) {
+        setErrorMessage('auth/unauthorized-domain');
+      } else {
+        setErrorMessage(err.message || 'Gagal login ke akun Google.');
+      }
     } finally {
       setLoading(false);
     }
@@ -332,12 +339,71 @@ export const GoogleWorkspaceSyncModal: React.FC<GoogleWorkspaceSyncModalProps> =
               </div>
             )}
 
-            {errorMessage && (
+            {errorMessage === 'auth/unauthorized-domain' || errorMessage?.includes('unauthorized-domain') ? (
+              <div className="p-4 bg-amber-50 border border-amber-300 text-amber-950 rounded-2xl space-y-3 animate-in fade-in">
+                <div className="flex items-start gap-2.5">
+                  <AlertCircle className="w-5 h-5 text-amber-600 shrink-0 mt-0.5" />
+                  <div>
+                    <h5 className="font-bold text-xs sm:text-sm text-amber-900">
+                      Domain Belum Diizinkan di Firebase Authentication (Hanya Perlu 30 Detik)
+                    </h5>
+                    <p className="text-xs text-amber-800 mt-1 leading-relaxed">
+                      Google mewajibkan domain website (<b>{typeof window !== 'undefined' ? window.location.hostname : 'pengaduan-ten.vercel.app'}</b>) didaftarkan di daftar <i>Authorized Domains</i> Firebase Authentication demi keamanan.
+                    </p>
+                  </div>
+                </div>
+
+                <div className="bg-white/80 p-3.5 rounded-xl border border-amber-200 text-xs space-y-2">
+                  <div className="font-bold text-slate-800">Langkah Cepat Mengatasinya:</div>
+                  <ol className="list-decimal pl-4 space-y-2 text-slate-700">
+                    <li>
+                      Buka pengaturan <b>Authorized Domains</b> di Firebase Console:
+                      <div className="mt-1">
+                        <a
+                          href="https://console.firebase.google.com/project/gen-lang-client-0174232099/authentication/settings"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-lg text-[11px] shadow-xs cursor-pointer"
+                        >
+                          <span>Buka Firebase Console Settings</span>
+                          <ExternalLink className="w-3 h-3" />
+                        </a>
+                      </div>
+                    </li>
+                    <li>
+                      Di bagian paling bawah tabel <b>"Authorized domains"</b>, klik tombol <b>"Add domain"</b>.
+                    </li>
+                    <li className="flex flex-wrap items-center gap-2">
+                      <span>Ketik atau tempelkan nama domain:</span>
+                      <code className="px-2 py-0.5 bg-slate-100 border border-slate-300 rounded font-mono font-bold text-blue-700">
+                        {typeof window !== 'undefined' ? window.location.hostname : 'pengaduan-ten.vercel.app'}
+                      </code>
+                      <button
+                        type="button"
+                        onClick={() => {
+                          const hostname = typeof window !== 'undefined' ? window.location.hostname : 'pengaduan-ten.vercel.app';
+                          navigator.clipboard.writeText(hostname);
+                          setDomainCopied(true);
+                          setTimeout(() => setDomainCopied(false), 3000);
+                        }}
+                        className="px-2 py-0.5 bg-slate-200 hover:bg-slate-300 text-slate-800 font-bold rounded text-[11px] flex items-center gap-1 cursor-pointer"
+                      >
+                        {domainCopied ? <Check className="w-3 h-3 text-emerald-600" /> : <Copy className="w-3 h-3 text-slate-600" />}
+                        <span>{domainCopied ? 'Tersalin!' : 'Salin Domain'}</span>
+                      </button>
+                    </li>
+                    <li>
+                      Klik <b>Save (Simpan)</b>, lalu kembali ke halaman ini dan coba klik <b>"Sign in with Google"</b> kembali.
+                    </li>
+                  </ol>
+                </div>
+              </div>
+            ) : errorMessage ? (
               <div className="p-3 bg-rose-50 border border-rose-200 text-rose-800 text-xs font-bold rounded-xl flex items-center gap-2 animate-in fade-in">
                 <AlertCircle className="w-4 h-4 text-rose-600 shrink-0" />
                 <span>{errorMessage}</span>
               </div>
-            )}
+            ) : null}
 
             {/* Navigation Tabs (Sheets vs Drive) */}
             <div className="flex border-b border-slate-200">
